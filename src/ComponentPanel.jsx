@@ -1,6 +1,5 @@
 import React, { useReducer, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { Tabs, Radio } from 'antd';
 import ComponentSelectList from './ComponentSelectList';
 import { components, formComponents } from './components/index';
 import ErrorBoundary from './ErrorBoundary';
@@ -11,7 +10,6 @@ import './ComponentPanel.less';
 const ComponentPanel = () => {
   const app = useSelector((state) => state.app);
 
-  const [type, setType] = useState('0');
   const [activeTypes, setActiveTypes] = useState([0]); // 默认展开的type
 
   // 模块
@@ -51,14 +49,14 @@ const ComponentPanel = () => {
       components,
     },
 
-    {
-      title: (
-        <span>
-          <Icon type={'icondown'} className="icon"></Icon> zarm表单模块
-        </span>
-      ),
-      components: formComponents,
-    },
+    // {
+    //   title: (
+    //     <span>
+    //       <Icon type={'icondown'} className="icon"></Icon> zarm表单模块
+    //     </span>
+    //   ),
+    //   components: formComponents,
+    // },
   ];
 
   return (

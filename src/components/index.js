@@ -65,22 +65,22 @@ export const components = [
 ];
 
 export const formComponents = [
-  {
-    cid: 'Button',
-    type: Button,
-    name: '按钮',
-    icon: 'iconpicturea1',
-    setting: settings.Button,
-    order: 100,
-  },
-  {
-    cid: 'Input',
-    type: Input,
-    name: '文本框',
-    icon: 'iconedit',
-    setting: settings.Input,
-    order: 100,
-  },
+  // {
+  //   cid: 'Button',
+  //   type: Button,
+  //   name: '按钮',
+  //   icon: 'iconpicturea1',
+  //   setting: settings.Button,
+  //   order: 100,
+  // },
+  // {
+  //   cid: 'Input',
+  //   type: Input,
+  //   name: '文本框',
+  //   icon: 'iconedit',
+  //   setting: settings.Input,
+  //   order: 100,
+  // },
 ];
 
 const all = [...components, ...formComponents];
