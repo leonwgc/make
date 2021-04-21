@@ -3,7 +3,6 @@ import { useSelector, useDispatch } from 'react-redux';
 import { Tabs, Radio } from 'antd';
 import ComponentSelectList from './ComponentSelectList';
 import { components, formComponents } from './components/index';
-import TplSelectList from './TplSelectList';
 import ErrorBoundary from './ErrorBoundary';
 import Icon from './Icon';
 import classnames from 'classnames';
@@ -51,22 +50,7 @@ const ComponentPanel = () => {
       ),
       components,
     },
-    // {
-    //   title: (
-    //     <span>
-    //       <Icon type={'icondown'} className="icon"></Icon> 商品模块
-    //     </span>
-    //   ),
-    //   components: productComponents,
-    // },
-    // {
-    //   title: (
-    //     <span>
-    //       <Icon type={'icondown'} className="icon"></Icon> 定制模块
-    //     </span>
-    //   ),
-    //   components: otherComponents,
-    // },
+
     {
       title: (
         <span>
@@ -79,22 +63,8 @@ const ComponentPanel = () => {
 
   return (
     <div className="component-panel">
-      <div className="type-select">
-        <Radio.Group
-          value={type}
-          onChange={(e) => {
-            setType(e.target.value);
-          }}
-        >
-          <Radio.Button value="0">模块</Radio.Button>
-          <Radio.Button value="1">我的模版</Radio.Button>
-        </Radio.Group>
-      </div>
-
       <ErrorBoundary>
-        <div className="select-list">
-          {type == '0' ? renderComponents(data) : <TplSelectList />}
-        </div>
+        <div className="select-list">{renderComponents(data)}</div>
       </ErrorBoundary>
     </div>
   );

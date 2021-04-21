@@ -28,3 +28,18 @@ export const remove = (tid) => {
   list = list.filter((item) => item.tid !== tid);
   setList(list);
 };
+
+export const setPage = (app) => {
+  const { name, extra = {}, comps = [] } = app;
+  localStorage.setItem('page', JSON.stringify({ name, extra, comps }));
+};
+
+export const getPage = () => {
+  let str = localStorage.getItem('page');
+
+  try {
+    if (str) return JSON.parse(str);
+  } catch (ex) {
+    return {};
+  }
+};

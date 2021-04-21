@@ -32,26 +32,17 @@ export default function Header() {
   ];
 
   const renameSave = ({ name }) => {
-    service
-      .updatePage({ name, id })
-      .then(() => {
-        app.name = name;
-        updateStore({ showRenameDlg: false });
-        showSuccess('保存成功');
-      })
-      .catch((ex) => {
-        showError(ex);
-        saveForm.resetFields();
-      });
+    app.name = name;
+    service.setPage(app);
+    updateStore({ showRenameDlg: false });
+    showSuccess('保存成功');
   };
 
   const bgColorSave = (color) => {
-    extra.bgColor = color;
-
-    service.updatePage({ id, extra: JSON.stringify(extra) }).then(() => {
-      updateStore();
-      message.success('保存成功');
-    });
+    app.extra = { bgColor: color };
+    service.setPage(app);
+    updateStore();
+    message.success('保存成功');
   };
 
   return (

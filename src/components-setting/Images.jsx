@@ -244,19 +244,15 @@ function MyUpload({ label, tip = '', index, updateStore, selectedComponent }) {
     <div className="image-upload">
       <div className="l">
         <Upload
-          data={{ storeType: 'I', type: '29', creator: 'system' }}
-          action={`https://${getHostPrefix()}api.zuifuli.com/api/customer/v2/attach/upload4NoLogin`}
           fileList={_fl}
           showUploadList={true}
           accept="image/*"
-          onFileListChange={(fileList) => {
-            if (!fileList.length) {
-              images[index] = { ...images[index], url: '' };
-            } else {
-              images[index] = { ...images[index], url: fileList[0].url };
-            }
-            selectedComponent.props.images = [...images];
-            updateStore();
+          onChange={(info) => {
+            getBase64(info.file.originFileObj, (url) => {
+              images[index] = { ...images[index], url: url };
+              selectedComponent.props.images = [...images];
+              updateStore();
+            });
           }}
         >
           {(loading, fileList) => {
@@ -286,4 +282,10 @@ function MyUpload({ label, tip = '', index, updateStore, selectedComponent }) {
       </div>
     </div>
   );
+}
+
+function getBase64(img, callback) {
+  const reader = new FileReader();
+  reader.addEventListener('load', () => callback(reader.result));
+  reader.readAsDataURL(img);
 }
