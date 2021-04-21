@@ -1,4 +1,3 @@
-#  可视化搭建h5页面
 ### 项目地址
 [https://github.com/leonwgc/make](https://github.com/leonwgc/make)
 
@@ -14,6 +13,8 @@
 1. 打包基于vite2 
 2. 前端依赖 react全家桶 ,react/redux/hooks
 3. 拖拽/排序依赖 [http://www.sortablejs.com/](http://www.sortablejs.com/)
+4. pc端组件基于antd4 [https://ant.design/index-cn](https://ant.design/index-cn)
+5. 移动端预览基于zarm [https://zarm.gitee.io/#/](https://zarm.gitee.io/#/)
 
 #### 运行
 - yarn 安装依赖
