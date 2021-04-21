@@ -1,0 +1,46 @@
+.prop-setting {
+  background-color: #fff;
+  width: 300px;
+  opacity: 1;
+  transition: all 0.2s ease-in-out;
+
+  &.hide {
+    padding: 0;
+    opacity: 0;
+  }
+
+  > .title {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px;
+    font-size: 16px;
+    font-family: PingFangSC, PingFangSC-Medium;
+    font-weight: 500;
+    text-align: left;
+    color: #18191a;
+    line-height: 50px;
+    height: 50px;
+    border-bottom: 1px solid #f5f5f5;
+
+    .save-cTpl {
+      font-size: 12px;
+      font-family: PingFangSC, PingFangSC-Regular;
+      font-weight: 400;
+      text-align: right;
+      color: #484a4d;
+    }
+  }
+
+  > .setting {
+    padding: 12px;
+    overflow-y: scroll;
+    .item {
+      height: 750px;
+      -webkit-overflow-scrolling: touch;
+      &::-webkit-scrollbar {
+        display: none;
+      }
+    }
+  }
+}

@@ -1,0 +1,52 @@
+.component-panel {
+  min-height: 700px;
+  width: 224px;
+  background: #fff;
+
+  .panel-cmp {
+    display: inline-block;
+  }
+
+  .type-select {
+    padding: 11px 0 11px 32px;
+  }
+  .select-list {
+    height: 750px;
+    height: calc(100vh - 180px);
+    overflow-y: scroll;
+    -webkit-overflow-scrolling: touch;
+    &::-webkit-scrollbar {
+      display: none;
+    }
+  }
+
+  .type-data {
+    .type-title {
+      border-top: 1px solid #f5f5f5;
+      border-bottom: 1px solid #f5f5f5;
+      padding-left: 12px;
+      height: 40px;
+      line-height: 40px;
+      opacity: 1;
+      background: #ffffff;
+      margin-bottom: 10px;
+
+      &.active {
+        .icon {
+          transform: rotate(0);
+        }
+      }
+
+      .icon {
+        transition: transform 0.4s ease;
+        transform: rotate(-90deg);
+      }
+    }
+    .type-list {
+      padding-left: 12px;
+      &.hide {
+        display: none;
+      }
+    }
+  }
+}

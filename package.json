@@ -1,16 +1,16 @@
 {
-  "name": "vite-react-boilerplate",
+  "name": "make",
   "version": "1.0.0",
-  "description": "基于vite2的react脚手架",
+  "description": "可视化搭建h5页面",
   "keywords": [
     "react",
     "vite",
-    "boilerplate"
+    "h5 page make"
   ],
   "license": "MIT",
-  "repository": "https://github.com/leonwgc/vite-react-boilerplate",
+  "repository": "https://github.com/leonwgc/make",
   "bugs": {
-    "url": "https://github.com/leonwgc/vite-react-boilerplate/issues"
+    "url": "https://github.com/leonwgc/make/issues"
   },
   "scripts": {
     "start": "vite",
@@ -20,7 +20,19 @@
   },
   "dependencies": {
     "react": "^17.0.2",
-    "react-dom": "^17.0.2"
+    "react-dom": "^17.0.2",
+    "ahooks": "^2.9.2",
+    "antd": "^4.9.2",
+    "antd-form-render": "^1.0.1",
+    "classnames": "^2.2.6",
+    "connected-react-router": "^6.8.0",
+    "react-color": "^2.19.3",
+    "react-grid-layout": "^1.2.4",
+    "react-redux": "^7.2.2",
+    "react-router-dom": "^5.2.0",
+    "redux-thunk": "^2.3.0",
+    "sortablejs": "^1.13.0",
+    "zarm": "^2.8.2"
   },
   "devDependencies": {
     "@babel/cli": "^7.8.4",

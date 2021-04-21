@@ -1,0 +1,58 @@
+.image-input {
+  margin-bottom: 10px;
+  position: relative;
+  .ant-upload.ant-upload-select-picture-card {
+    width: 72px;
+    height: 72px;
+    margin: 12px 0;
+  }
+  .image-show-list {
+    position: relative;
+
+    img {
+      cursor: move;
+    }
+    .image-show {
+      position: relative;
+      display: flex;
+      height: 72px;
+      align-items: center;
+      margin-bottom: 12px;
+      .delete {
+        position: absolute;
+        right: 0;
+        top: 0;
+
+        opacity: 1;
+        font-size: 12px;
+        font-family: PingFangSC, PingFangSC-Regular;
+        font-weight: 400;
+        text-align: left;
+        color: #2465d4;
+        line-height: 16px;
+      }
+
+      .l {
+        width: 72px;
+      }
+      .r {
+        margin-left: 8px;
+        flex: 1;
+
+        .text {
+          opacity: 1;
+          font-size: 12px;
+          font-family: PingFangSC, PingFangSC-Regular;
+          font-weight: 400;
+          text-align: left;
+          color: #484a4d;
+          line-height: 16px;
+          margin-bottom: 8px;
+          .tip {
+            color: #909399;
+          }
+        }
+      }
+    }
+  }
+}

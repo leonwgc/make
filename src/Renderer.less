@@ -1,0 +1,74 @@
+@import (reference) './color';
+.design-cmp {
+  min-height: 30px;
+  list-style: none;
+  display: block;
+  position: relative;
+  cursor: move;
+  outline: none;
+  flex: 1;
+  cursor: move;
+  cursor: -webkit-grabbing;
+  overflow: hidden;
+
+  &.config-cmp {
+    cursor: not-allowed;
+  }
+
+  .design-cmp {
+    width: 80%;
+    border-width: 1px;
+  }
+
+  .mask {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    top: 0;
+    right: 0;
+    z-index: 100;
+    opacity: 0.4;
+
+    &.flex {
+      left: calc(100% - 34px);
+    }
+  }
+
+  .del {
+    position: absolute;
+    opacity: 0;
+    z-index: 200;
+    bottom: -2px;
+    right: -2px;
+    height: 20px;
+    width: 34px;
+    border-top-left-radius: 8px;
+    background: @primary-color;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+    font-size: 12px;
+  }
+
+  &.active,
+  &:hover {
+    border: 2px solid @primary-color;
+    .mask {
+    }
+    .del {
+      opacity: 1;
+    }
+  }
+
+  .sortable-ghost {
+    padding: 0;
+    border-top: 3px solid @primary-color;
+    border-style: solid;
+    height: 0;
+  }
+
+  &:not(:first-child) {
+    margin-top: 2px;
+  }
+}

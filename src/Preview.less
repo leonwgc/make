@@ -1,0 +1,64 @@
+@import (reference) './color';
+.preview {
+  width: 400px;
+  height: 800px;
+  background: #333;
+  border-radius: 35px;
+  box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.3);
+  position: fixed;
+  right: 100px;
+  z-index: 1000;
+  top: 50%;
+  transform: translate3d(0, -50%, 0) scale(.82);
+  transition: transform 0.4s ease-out;
+
+  &.hide {
+    display: none;
+  }
+
+  > .close {
+    right: -30px;
+    top: 0px;
+    position: absolute;
+    color: @primary-color;
+    font-size: 20px;
+  }
+
+  &::before {
+    content: '';
+    background: #ddd;
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%);
+    top: 30px;
+    width: 100px;
+    height: 8px;
+    border-radius: 50px;
+  }
+  &::after {
+    content: '';
+    background: #ddd;
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%);
+    bottom: 8px;
+    width: 50px;
+    height: 50px;
+    border-radius: 25px;
+  }
+  .screen {
+    width: 375px;
+    height: 667px;
+    background-color: #eee;
+    overflow-x: hidden;
+    overflow-y: scroll;
+    -webkit-overflow-scrolling: touch;
+    &::-webkit-scrollbar {
+      display: none;
+    }
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+  }
+}

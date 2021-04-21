@@ -1,0 +1,108 @@
+.zfl-image {
+  min-height: 50px;
+
+  &.image1 {
+    > img {
+      width: 100%;
+    }
+    &.card {
+      margin: auto 12px;
+    }
+  }
+
+  &.image2 {
+    &.full {
+      > img {
+        width: 50%;
+      }
+    }
+    &.card {
+      display: flex;
+      margin: 0 12px;
+      > img {
+        width: 171px;
+        &:first-child {
+          margin-right: 9px;
+        }
+      }
+    }
+  }
+
+  &.image3 {
+    overflow: hidden;
+    &.full {
+      > img {
+        width: 50%;
+        height: 125px;
+        float: left;
+        &:first-child {
+          height: 250px;
+        }
+      }
+    }
+    &.card {
+      width: 100%;
+      margin: 0 12px;
+      overflow: hidden;
+
+      > img {
+        width: 171px;
+        float: left;
+        &:first-child {
+          height: 228px;
+          margin-right: 9px;
+        }
+        &:not(:first-child) {
+          height: 110px;
+        }
+        &:last-child {
+          margin-top: 9px;
+        }
+      }
+    }
+  }
+
+  &.image31 {
+    overflow: hidden;
+    &.full {
+      > img {
+        width: 50%;
+        height: 125px;
+        float: right;
+        &:first-child {
+          height: 250px;
+        }
+      }
+    }
+    &.card {
+      width: 351px;
+      margin: 0 12px;
+      overflow: hidden;
+
+      > img {
+        width: 171px;
+        float: right;
+        &:first-child {
+          height: 228px;
+          margin-left: 9px;
+        }
+        &:not(:first-child) {
+          height: 110px;
+        }
+        &:last-child {
+          margin-top: 9px;
+        }
+      }
+    }
+  }
+
+  &.image4 {
+    > img {
+      width: 25%;
+      min-height: 140px;
+    }
+    &.card {
+      margin: auto 12px;
+    }
+  }
+}

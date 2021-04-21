@@ -1,0 +1,44 @@
+.color-picker-btn {
+  i {
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    margin-right: 8px;
+    opacity: 1;
+    background: #f7f7f7;
+    border: 1px solid #ffffff;
+    border-radius: 50%;
+    vertical-align: middle;
+  }
+
+  .cover {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 1;
+  }
+  .sketch-picker {
+    width: 260px !important;
+    position: absolute;
+    top: 47px;
+
+    z-index: 2;
+  }
+  .placement {
+    &.right .sketch-picker {
+      right: 0;
+    }
+    &.center .sketch-picker {
+      right: -75px;
+    }
+    &.left .sketch-picker {
+      left: 0;
+    }
+    &.top .sketch-picker {
+      bottom: 40px;
+      top: auto;
+    }
+  }
+}
