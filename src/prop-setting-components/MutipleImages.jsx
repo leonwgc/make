@@ -3,8 +3,7 @@ import { PlusOutlined, LoadingOutlined } from '@ant-design/icons';
 import Upload from '~/common-pc/Upload';
 import useSelectedComponent from '../hooks/useSelectedComponent';
 import useUpdateStore from '../hooks/useUpdateStore';
-import { getHostPrefix } from '~/utils/host';
-import { Input, Form } from 'antd';
+import { Input } from 'antd';
 import { gid } from '~/helper';
 import useSort from '~/hooks/useSort';
 import './MutipleImages.less';
@@ -30,10 +29,6 @@ export default function MutipleImages({ title }) {
         updateStore();
       },
     },
-    onSort: function (/**Event*/ evt) {
-      // same properties as onEnd
-      var a = evt;
-    },
   });
 
   if (!selectedComponent) return null;
@@ -57,29 +52,29 @@ export default function MutipleImages({ title }) {
     <div className="image-input">
       <div>{title}</div>
       <Upload
-        data={{ storeType: 'I', type: '29', creator: 'system' }}
-        action={`https://${getHostPrefix()}api.zuifuli.com/api/customer/v2/attach/upload4NoLogin`}
         fileList={fileList}
         showUploadList={false}
         accept="image/*"
-        onFileListChange={(fileList) => {
-          let lastFile = fileList[fileList.length - 1];
-          images.push({
-            url: lastFile.url,
-            link: '',
+        onChange={(info) => {
+          getBase64(info.file.originFileObj, (url) => {
+            images.push({
+              url,
+              link: '',
+            });
+            selectedComponent.props.images = [...images];
+            updateStore();
           });
-          selectedComponent.props.images = [...images];
-          updateStore();
         }}
       >
-        {(loading, fileList) => {
+        {(loading) => {
           return (
-            <div style={{ fontSize: 24, color: '#909399' }}>
+            <div style={{ fontSize: 20, color: '#909399' }}>
               {loading ? <LoadingOutlined /> : <PlusOutlined />}
             </div>
           );
         }}
       </Upload>
+
       <div ref={ref} className="image-show-list">
         {images.map((image, idx) => {
           return (
@@ -117,4 +112,9 @@ export default function MutipleImages({ title }) {
       </div>
     </div>
   );
+}
+function getBase64(img, callback) {
+  const reader = new FileReader();
+  reader.addEventListener('load', () => callback(reader.result));
+  reader.readAsDataURL(img);
 }

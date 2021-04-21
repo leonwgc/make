@@ -112,7 +112,7 @@ function SettingPanel() {
     <div className="prop-setting">
       <div className="title">
         {cfg.name}
-        <SaveAsTemplate updateStore={updateStore} comp={comp} />
+        {/* <SaveAsTemplate updateStore={updateStore} comp={comp} /> */}
       </div>
       <div className="setting">{renderPanel()}</div>
     </div>

@@ -60,7 +60,7 @@ export default function Header() {
           <FormRenderer layoutData={saveFormLayout}></FormRenderer>
         </Form>
       </Modal>
-      <div className="left-part">装修管理台</div>
+      <div className="left-part">可视化编辑器</div>
       <div className="center-part">
         <span className="title gray">当前页面：</span>
         <span className="title">{app.name}</span>
