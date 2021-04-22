@@ -46,12 +46,12 @@ const Renderer = ({ item = {}, isDesign = false, onRemove }) => {
         key={comp.id}
       >
         {renderItem(comp)}
-        <div
+        {/* <div
           className={classnames({
             mask: true,
             flex: comp.cid == 'Flex',
           })}
-        ></div>
+        ></div> */}
         {!isConfig ? (
           <div className="del">
             <Icon type="icondelete" onClick={onRemove}></Icon>

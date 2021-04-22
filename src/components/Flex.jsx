@@ -7,6 +7,17 @@ import Renderer from '../Renderer';
 import { getConfigById } from './index';
 import useUpdateStore from '../hooks/useUpdateStore';
 
+const getClosestComp = (el) => {
+  let _c = el;
+  while (_c && !_c.classList.contains('design-cmp')) {
+    _c = _c.parentElement;
+  }
+
+  if (_c) {
+    return _c.dataset.id;
+  }
+};
+
 const Flex = ({ item = {}, isDesign = false, style = {} }) => {
   const ref = useRef(null);
   let data = item.comps || [];
@@ -66,19 +77,6 @@ const Flex = ({ item = {}, isDesign = false, style = {} }) => {
 
               const hasTpl = typeof tpl === 'string' && tpl.length >= 2;
 
-              // const ext = {};
-
-              // stage as tpl
-              // if (hasTpl) {
-              //   try {
-              //     const _tpl = JSON.parse(tpl);
-              //     const { comps = [] } = _tpl;
-
-              //     if (comps.length) {
-              //       ext.comps = comps;
-              //     }
-              //   } catch (ex) {}
-              // }
               let cmp;
 
               const id = [cid, '-', gid()].join('');
@@ -99,7 +97,6 @@ const Flex = ({ item = {}, isDesign = false, style = {} }) => {
                   id,
                   props: { ...defaultProps },
                   style: { ...defaultStyles },
-                  // ...ext,
                 };
               }
 
@@ -135,14 +132,14 @@ const Flex = ({ item = {}, isDesign = false, style = {} }) => {
 
   useEffect(() => {
     const onClick = (e) => {
-      const shell = e.target.parentElement;
-
-      if (shell.classList.contains('design-cmp')) {
-        updateStore({ activeComp: shell.dataset.id });
-      } else {
-        if (e.target === ref.current) {
-          updateStore({ activeComp: null });
+      e.stopPropagation();
+      if (e.target !== ref.current) {
+        let id = getClosestComp(e.target);
+        if (id) {
+          updateStore({ activeComp: id });
         }
+      } else {
+        updateStore({ activeComp: null });
       }
     };
 

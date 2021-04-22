@@ -8,7 +8,7 @@ export default function Images({
   images = [],
   arrangeType = 'image1', //排列方式
   styleType = 'card', // 模块样式
-  hideMargin = true,
+  hideMargin = false,
   bgColor,
 }) {
   let n = Number(arrangeType.slice(5, 6));
