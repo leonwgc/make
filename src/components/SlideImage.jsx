@@ -1,27 +1,30 @@
 import React from 'react';
 import './SlideImage.less';
+import cat from './images/cat.jpg';
+import dog from './images/dog.jpg';
 
-export default function SlideImage({ images = [], hideMargin = true, bgColor }) {
+const defaults = [{ url: cat }, { url: dog }, { url: cat }, { url: dog }];
+
+export default function SlideImage({ images = [...defaults], hideMargin = false, bgColor }) {
   return (
     <div
       className={`zfl-slide-image`}
-      style={{ marginBottom: `${hideMargin ? 0 : 9}px`, backgroundColor: bgColor }}
+      style={{ marginBottom: `${hideMargin ? 0 : 5}px`, backgroundColor: bgColor }}
     >
       {images.map((item, idx) => {
         return (
-          <img
-            // 部署环境需要加上onClick
+          <div
             // onClick={() => {
-            //   if (item.link1) {
+            //   if (item.link) {
             //     location.href = item.link;
             //   }
             // }}
-            src={item.url}
+            className="img"
             key={idx}
-          />
+            style={{ backgroundImage: `url(${item.url})` }}
+          ></div>
         );
       })}
-      <div className="space"></div>
     </div>
   );
 }

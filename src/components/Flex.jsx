@@ -1,5 +1,5 @@
 import React, { useEffect, useRef } from 'react';
-import { gid, getSettingDefaultValues } from '~/helper';
+import { gid, getSettingDefaultValues, convertJSONToObject } from '~/helper';
 import { message } from 'antd';
 import Sortable from 'sortablejs';
 import { useSelector } from 'react-redux';
@@ -25,9 +25,9 @@ const Flex = ({ item = {}, isDesign = false, style = {} }) => {
   const app = useSelector((state) => state.app);
   const updateStore = useUpdateStore();
 
-  const updateData = (data) => {
+  const updateData = (data, activeComp = null) => {
     item.comps = data;
-    updateStore({ activeComp: null });
+    updateStore({ activeComp });
   };
 
   useEffect(() => {
@@ -61,6 +61,7 @@ const Flex = ({ item = {}, isDesign = false, style = {} }) => {
         },
         store: {
           set: function (s) {
+            let id = null;
             if (newAddedComponent) {
               const { index, dom, cid, tpl } = newAddedComponent;
               dom.remove();
@@ -78,18 +79,12 @@ const Flex = ({ item = {}, isDesign = false, style = {} }) => {
               const hasTpl = typeof tpl === 'string' && tpl.length >= 2;
 
               let cmp;
-
-              const id = [cid, '-', gid()].join('');
+              id = [cid, '-', gid()].join('');
 
               // comp as tpl
               if (hasTpl) {
-                try {
-                  const _tpl = JSON.parse(tpl);
-                  const { comp = {} } = _tpl;
-                  cmp = comp;
-                  cmp.id = id;
-                  cmp.order = order;
-                } catch (ex) {}
+                cmp = convertJSONToObject(tpl);
+                cmp.id = id;
               } else {
                 cmp = {
                   cid: cid,
@@ -120,7 +115,7 @@ const Flex = ({ item = {}, isDesign = false, style = {} }) => {
 
               s.sort(data.map((d) => d.id));
             }
-            updateData(data);
+            updateData(data, id);
           },
         },
       });

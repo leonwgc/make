@@ -1,12 +1,15 @@
 import React from 'react';
 import { Carousel } from 'zarm';
-import EmptyImage from './EmptyImage';
 import './Carousel.less';
+import cat from './images/cat.jpg';
+import dog from './images/dog.jpg';
+
+const defaults = [{ url: cat }, { url: dog }, { url: cat }, { url: dog }];
 
 export default function MyCarousel({
   styleType = 'card', // 模块样式
   bgColor,
-  images = [],
+  images = [...defaults],
   hideMargin = false,
 }) {
   const height = styleType === 'card' ? 140 : 150;

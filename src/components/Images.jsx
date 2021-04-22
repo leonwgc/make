@@ -23,9 +23,8 @@ export default function Images({
       {images.map((item, idx) => {
         return item ? (
           <img
-            // 部署环境需要加上onClick
             // onClick={() => {
-            //   if (item.link1) {
+            //   if (item.link) {
             //     location.href = item.link;
             //   }
             // }}
