@@ -9,7 +9,7 @@ import Title from './Title';
 
 import { Button } from 'zarm';
 import Input from './Input';
-
+import Form from './Form';
 // 暂时没有用到容器组件的需求，隐藏
 // export const flex = {
 //   cid: 'Flex',
@@ -61,6 +61,15 @@ export const components = [
     icon: 'icontitle',
     setting: settings.Title,
     order: 100,
+  },
+  {
+    cid: 'Form',
+    type: Form,
+    name: '表单',
+    icon: 'iconpicturea1',
+    setting: settings.Form,
+    order: 100,
+    h: 100,
   },
 ];
 

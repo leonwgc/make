@@ -1,10 +1,10 @@
 import React from 'react';
-import { Input as ZarmInput, Cell } from 'zarm';
+import { Input, Cell } from 'zarm';
 
-export default function Input({ title = '文本框', placeholder = '请输入' }) {
+export default function MyInput({ title = '文本框', placeholder = '请输入' }) {
   return (
     <Cell title={title}>
-      <ZarmInput clearable type="text" placeholder={placeholder} />
+      <Input clearable type="text" placeholder={placeholder} />
     </Cell>
   );
 }

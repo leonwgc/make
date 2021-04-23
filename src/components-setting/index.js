@@ -4,6 +4,7 @@ import Carousel from './Carousel';
 import Space from './Space';
 import SlideImage from './SlideImage';
 import Title from './Title';
+import Form from './Form';
 
 export default {
   Flex,
@@ -12,4 +13,5 @@ export default {
   Space,
   SlideImage,
   Title,
+  Form,
 };
