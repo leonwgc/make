@@ -4,7 +4,7 @@ import Images from './Images';
 import Space from './Space';
 import SlideImage from './SlideImage';
 import Title from './Title';
-
+import Form from './Form';
 import { Button } from 'zarm';
 import Input from './Input';
 
@@ -17,6 +17,7 @@ const renderMapping = {
   Title,
   Button,
   Input,
+  Form,
 };
 
 export default renderMapping;
