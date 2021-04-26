@@ -69,7 +69,7 @@ export const components = [
     icon: 'iconpicturea1',
     setting: settings.Form,
     order: 100,
-    h: 100,
+    // h: 100,
   },
 ];
 
