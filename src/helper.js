@@ -1,6 +1,7 @@
+import { nanoid } from 'nanoid';
+
 export function gid() {
-  let stamp = +new Date();
-  return (((1 + Math.random()) * stamp) | 0).toString(16);
+  return nanoid(12);
 }
 
 export const getActiveComponentById = (id, comps = []) => {
