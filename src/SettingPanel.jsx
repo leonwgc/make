@@ -5,36 +5,18 @@ import FormRenderer from 'antd-form-render';
 import useSelectedComponent from './hooks/useSelectedComponent';
 import useUpdateStore from './hooks/useUpdateStore';
 import { getConfigById } from './components/index';
-import SaveAsTemplate from './SaveAsTemplate';
 import './SettingPanel.less';
-
-const { TabPane } = Tabs;
 
 function SettingPanel() {
   const [form] = Form.useForm();
   const comp = useSelectedComponent();
-  const app = useSelector((state) => state.app);
   const updateStore = useUpdateStore();
-  const [tab, setTab] = useState('0');
-  const [hasProps, setHasProps] = useState(false);
-  const [hasStyle, setHasStyle] = useState(false);
-
-  let cfg = {};
 
   useEffect(() => {
     if (comp) {
       form.resetFields();
-      const { cid } = comp;
-      cfg = getConfigById(cid);
-      let { style = {}, props = {} } = cfg.setting;
-      const hasStyle = Object.keys(style).length;
-      const hasProps = Object.keys(props).length;
-      setHasProps(hasProps);
-      setHasStyle(hasStyle);
-      const tab = hasProps ? '0' : hasStyle ? '1' : '0';
-      setTab(tab);
     }
-  }, [comp]);
+  }, [comp, form]);
 
   if (!comp) {
     return <div className="prop-setting hide"></div>;
@@ -42,7 +24,7 @@ function SettingPanel() {
 
   const initValues = { ...comp.props, ...comp.style };
   const { cid } = comp;
-  cfg = getConfigById(cid);
+  const cfg = getConfigById(cid);
   let { props = {}, style = {} } = cfg.setting;
   const propFields = Object.keys(props);
   const styleFields = Object.keys(style);
@@ -110,10 +92,7 @@ function SettingPanel() {
 
   return (
     <div className="prop-setting">
-      <div className="title">
-        {cfg.name}
-        {/* <SaveAsTemplate updateStore={updateStore} comp={comp} /> */}
-      </div>
+      <div className="title">{cfg.name}</div>
       <div className="setting">{renderPanel()}</div>
     </div>
   );
