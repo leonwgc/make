@@ -9,9 +9,11 @@ export default function Preview({ children, visible, onClose }) {
   const app = useSelector((state) => state.app);
   useDragMove(previewRef);
 
+  const { extra = {} } = app;
+
   let style = {};
-  if (app.bgColor) {
-    style.backgroundColor = app.bgColor;
+  if (extra.bgColor) {
+    style.backgroundColor = extra.bgColor;
   }
 
   return (
