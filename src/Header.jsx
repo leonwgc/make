@@ -16,8 +16,6 @@ export default function Header() {
   const updateStore = useUpdateStore();
   const [saveForm] = Form.useForm();
 
-  const { extra = {} } = app;
-
   const saveFormLayout = [
     {
       type: Input,
@@ -39,7 +37,7 @@ export default function Header() {
   };
 
   const bgColorSave = (color) => {
-    app.extra = { bgColor: color };
+    app.bgColor = color;
     service.setPage(app);
     updateStore();
     message.success('保存成功');
@@ -70,7 +68,7 @@ export default function Header() {
           <Button icon={<EditOutlined />} onClick={() => updateStore({ showRenameDlg: true })}>
             重命名
           </Button>
-          <ColorPicker color={extra.bgColor} callback={bgColorSave} />
+          <ColorPicker color={app.bgColor} callback={bgColorSave} />
         </Space>
       </div>
     </div>

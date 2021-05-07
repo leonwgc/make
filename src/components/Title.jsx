@@ -6,7 +6,7 @@ export default function Title({
   text = '标题',
   bgColor,
   color = '',
-  fontSize = 28,
+  fontSize = 14,
   arrowColor,
   textAlign = 'left',
   fontWeight = '',

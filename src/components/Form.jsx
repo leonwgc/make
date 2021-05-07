@@ -1,17 +1,16 @@
 import React, { useState } from 'react';
-import { Input, Select, Checkbox } from 'zarm';
+import { Input, Select } from 'zarm';
 import FormRender from 'zarm-form-render';
 
 const typeMapping = {
   Input,
   Select,
-  Checkbox: Checkbox.Group,
 };
 
 export default function Form({ list = [] }) {
   const [data, setData] = useState({});
   const flayout = list.map((item) => {
-    const { labels = [], values = [], name, type, label, inputType } = item;
+    const { labels = [], values = [], name, type, label, format } = item;
     let props = {};
     if (labels.length) {
       props.items = labels.map((_i, idx) => {
@@ -20,7 +19,7 @@ export default function Form({ list = [] }) {
     }
     let elProps = {};
     if (type === 'Input') {
-      elProps.type = inputType || 'text';
+      elProps.type = format || 'text';
     }
 
     return {

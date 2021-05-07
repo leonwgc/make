@@ -6,7 +6,6 @@ import { MinusCircleFilled, EditFilled, PlusOutlined, PlusCircleOutlined } from 
 
 const typeMapping = {
   Input,
-  Checkbox,
   Select,
 };
 
@@ -67,7 +66,7 @@ export default function MyForm({ selectedComponent, updateStore }) {
               name: 'labels',
               itemProps: {
                 rules: [{ required: true, message: '请填写' }],
-                initialValue: '选项1',
+                initialValue: ['选项1', '选项2', '选项3'],
               },
               elProps: {
                 mode: 'tags',
@@ -81,11 +80,11 @@ export default function MyForm({ selectedComponent, updateStore }) {
         return t === 'Select' || t === 'Checkbox'
           ? {
               type: Select,
-              label: 'values',
+              label: '选项值',
               name: 'values',
               itemProps: {
                 rules: [{ required: true, message: '请填写' }],
-                initialValue: '选项1的值',
+                initialValue: ['选项1的值', '选项2的值', '选项3的值'],
               },
               elProps: {
                 mode: 'tags',
@@ -99,20 +98,20 @@ export default function MyForm({ selectedComponent, updateStore }) {
         return t === 'Input'
           ? {
               type: Select,
-              label: 'inputType',
-              name: 'inputType',
+              label: '输入格式',
+              name: 'format',
               itemProps: {
-                rules: [{ required: true, message: '请填写' }],
+                rules: [{ required: true, message: '请选择' }],
                 initialValue: 'text',
               },
               elProps: {
                 options: [
-                  { label: 'text', value: 'text' },
-                  { label: 'number', value: 'number' },
-                  { label: 'idcard', value: 'idcard' },
-                  { label: 'price', value: 'price' },
-                  { label: 'password', value: 'password' },
-                  { label: 'search', value: 'search' },
+                  { label: '文本', value: 'text' },
+                  { label: '数字', value: 'number' },
+                  { label: '身份证', value: 'idcard' },
+                  { label: '价格', value: 'price' },
+                  { label: '密码', value: 'password' },
+                  { label: '搜索', value: 'search' },
                 ],
               },
             }
@@ -173,6 +172,7 @@ export default function MyForm({ selectedComponent, updateStore }) {
         <Form
           form={form}
           layout="horizontal"
+          autoComplete="off"
           onFinish={(v) => {
             list.push(v);
             selectedComponent.props.list = [...list];

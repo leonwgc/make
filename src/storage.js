@@ -30,8 +30,8 @@ export const remove = (tid) => {
 };
 
 export const setPage = (app) => {
-  const { name, extra = {}, comps = [] } = app;
-  localStorage.setItem('page', JSON.stringify({ name, extra, comps }));
+  const { name, comps = [], bgColor = '' } = app;
+  localStorage.setItem('page', JSON.stringify({ name, bgColor, comps }));
 };
 
 export const getPage = () => {

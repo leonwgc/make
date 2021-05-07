@@ -51,11 +51,11 @@ export default function Title({ selectedComponent, updateStore }) {
       type: Radio.Group,
       elProps: {
         options: [
-          { label: '28px', value: 28 },
-          { label: '30px', value: 30 },
-          { label: '34px', value: 34 },
+          { label: '小', value: 14 },
+          { label: '中', value: 15 },
+          { label: '大', value: 17 },
         ],
-        defaultValue: 28,
+        defaultValue: 14,
       },
     },
     {

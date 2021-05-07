@@ -22,11 +22,9 @@ export default function Footer() {
     updateStore({ comps: [], activeComp: null });
   };
 
-  const save = (formData) => {
+  const save = () => {
     updateStore({ showSaveDlg: false });
-    let _app = { ...app, ...formData };
-    service.setPage(_app);
-    saveForm.resetFields();
+    service.setPage({ bgColor: app.bgColor, comps: app.comps });
     message.success('保存成功');
   };
 
