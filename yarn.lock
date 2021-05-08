@@ -1317,14 +1317,14 @@ ansi-styles@^4.0.0, ansi-styles@^4.1.0:
   dependencies:
     color-convert "^2.0.1"
 
-antd-form-render@^1.0.1:
-  version "1.0.1"
-  resolved "https://registry.nlark.com/antd-form-render/download/antd-form-render-1.0.1.tgz#eefe2e5b4a1f37d4499cf42460d3ff773de127c7"
-  integrity sha1-7v4uW0ofN9RJnPQkYNP/dz3hJ8c=
+antd-form-render@^1.0.3:
+  version "1.0.3"
+  resolved "https://registry.npmjs.org/antd-form-render/-/antd-form-render-1.0.3.tgz#bbefa130de6cfb2cb64fe7202d8b360cfdc09fa0"
+  integrity sha512-YaUUNjdSdjMEjFTewwKeXjPWBkMuJvGuZ/hVhvZFEwg+tZxOdp4N3uvjHpDlahY+N/eoHeOv5lLDdH8bVBRmuA==
   dependencies:
     antd "^4.6.5"
-    react "^16.8.0"
-    react-dom "^16.8.0"
+    react "^17.0.2"
+    react-dom "^17.0.2"
 
 antd@^4.6.5, antd@^4.9.2:
   version "4.15.2"
