@@ -6,11 +6,11 @@
 2. 支持组件排序
 3. 自定义属性设置面板
 4. 根据js配置自动生成属性面板
-5. 手机模拟预览
+5. 模拟手机预览
 6. 多图设置面板支持拖拽排序
 
 #### 技术栈
-1. 打包基于vite2 
+1. 打包基于vite2 (vited)
 2. 前端依赖 react全家桶 ,react/redux/hooks
 3. 拖拽/排序依赖 [http://www.sortablejs.com/](http://www.sortablejs.com/)
 4. pc端组件基于antd4 [https://ant.design/index-cn](https://ant.design/index-cn)
