@@ -1,9 +1,8 @@
 import React, { useEffect, useState } from 'react';
-import { useSelector } from 'react-redux';
-import { Button, Modal, Tabs, Form, Input, message } from 'antd';
+import { Form } from 'antd';
 import FormRenderer from 'antd-form-render';
 import useSelectedComponent from './hooks/useSelectedComponent';
-import useUpdateStore from './hooks/useUpdateStore';
+import { useUpdateStore } from 'simple-redux-store';
 import { getConfigById } from './components/index';
 import './SettingPanel.less';
 

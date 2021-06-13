@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import { useSelector } from 'react-redux';
 import Flex from '~/components/Flex';
 import * as service from './storage';
-import useUpdateStore from './hooks/useUpdateStore';
+import { useUpdateStore, useSelector } from 'simple-redux-store';
 import './EditorStage.less';
 
 const EditorStage = () => {

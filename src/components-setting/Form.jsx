@@ -1,8 +1,8 @@
-import React, { useEffect, useState, useRef } from 'react';
-import { useSelector } from 'react-redux';
-import { Button, Modal, Tabs, Form, Input, Checkbox, Radio, Divider, Select } from 'antd';
+import React, { useState } from 'react';
+import { useSelector } from 'simple-redux-store';
+import { Button, Modal, Form, Input, Select } from 'antd';
 import FormRenderer from 'antd-form-render';
-import { MinusCircleFilled, EditFilled, PlusOutlined, PlusCircleOutlined } from '@ant-design/icons';
+import { MinusCircleFilled, PlusOutlined } from '@ant-design/icons';
 
 const typeMapping = {
   Input,

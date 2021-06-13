@@ -29,11 +29,7 @@ export default function MyCarousel({
         );
       });
     } else {
-      return (
-        <div>
-          <EmptyImage />
-        </div>
-      );
+      return <div></div>;
     }
   };
 

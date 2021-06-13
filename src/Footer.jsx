@@ -1,10 +1,7 @@
 import React from 'react';
-import { useSelector } from 'react-redux';
 import { Button, Modal, Space, Form, Input, message, Popconfirm } from 'antd';
-import useUpdateStore from './hooks/useUpdateStore';
-import FormRenderer from 'antd-form-render';
+import { useUpdateStore, useSelector } from 'simple-redux-store';
 import DataRenderer from './components/DataRenderer';
-import { gid } from '~/helper';
 import * as service from './storage';
 import Preview from './Preview';
 import './Footer.less';

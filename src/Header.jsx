@@ -1,10 +1,8 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { Button, Modal, Space, Form, Input, message } from 'antd';
 import FormRenderer from 'antd-form-render';
-import { useSelector } from 'react-redux';
-import { useParams } from 'react-router-dom';
 import { EditOutlined } from '@ant-design/icons';
-import useUpdateStore from './hooks/useUpdateStore';
+import { useUpdateStore, useSelector } from 'simple-redux-store';
 import { showError, showSuccess } from './msg';
 import ColorPicker from './ColorPicker';
 import * as service from './storage';
@@ -12,7 +10,6 @@ import './Header.less';
 
 export default function Header() {
   const app = useSelector((state) => state.app);
-  const { type = '', id = '' } = useParams();
   const updateStore = useUpdateStore();
   const [saveForm] = Form.useForm();
 

@@ -1,5 +1,5 @@
 import React, { useReducer, useState } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
+import { useUpdateStore, useSelector } from 'simple-redux-store';
 import ComponentSelectList from './ComponentSelectList';
 import { components, formComponents } from './components/index';
 import ErrorBoundary from './ErrorBoundary';

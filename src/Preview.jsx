@@ -1,7 +1,7 @@
-import React, { useEffect, useRef } from 'react';
-import { useSelector } from 'react-redux';
+import React, { useRef } from 'react';
+import { useSelector } from 'simple-redux-store';
 import { CloseOutlined } from '@ant-design/icons';
-import useDragMove from './hooks/useDragMove';
+import { useDragMove } from 'whooks';
 import './Preview.less';
 
 export default function Preview({ children, visible, onClose }) {

@@ -1,5 +1,5 @@
 import React, { useEffect, uesState, useState } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
+import { useSelector } from 'simple-redux-store';
 import { getActiveComponentById } from '../helper';
 
 export default function useSelectedComponent() {

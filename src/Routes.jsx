@@ -1,33 +1,20 @@
 import React, { Suspense } from 'react';
-import { ConfigProvider } from 'antd';
+import { ConfigProvider, Spin } from 'antd';
 import zhCN from 'antd/es/locale/zh_CN';
-import { Provider } from 'react-redux';
-import { ConnectedRouter } from 'connected-react-router';
-import store, { history } from './stores';
+import { Provider, configureStore } from 'simple-redux-store';
 import { HashRouter as Router, Route, Switch } from 'react-router-dom';
 import routes from './RoutesConfig';
-import { Spin } from 'antd';
-// import 'dayjs/locale/zh-cn'; // load on demand
-// import dayjs from 'dayjs';
 import App from './App';
 import './App.less';
 
-// dayjs.locale('zh-cn');
-
-const Loading = () => {
-  return (
-    <div className="my-loading">
-      <Spin />
-    </div>
-  );
-};
+const store = configureStore();
 
 const Routes = () => {
   return (
     <Provider store={store}>
       <ConfigProvider locale={zhCN}>
-        <ConnectedRouter history={history}>
-          <Suspense fallback={<Loading />}>
+        <Router>
+          <Suspense fallback={<Spin />}>
             <Switch>
               {routes.map((route, idx) => (
                 <Route
@@ -40,7 +27,7 @@ const Routes = () => {
               <Route component={App} />
             </Switch>
           </Suspense>
-        </ConnectedRouter>
+        </Router>
       </ConfigProvider>
     </Provider>
   );

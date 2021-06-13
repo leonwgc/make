@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import FormRenderer from 'antd-form-render';
-import { useSelector } from 'react-redux';
+import { useSelector } from 'simple-redux-store';
 import * as storage from './storage';
 import { gid } from './helper';
 import { Modal, Form, Input, message } from 'antd';

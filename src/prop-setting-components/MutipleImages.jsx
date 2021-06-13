@@ -1,11 +1,11 @@
-import React, { useEffect, useState, useRef } from 'react';
+import React, { useRef } from 'react';
 import { PlusOutlined, LoadingOutlined } from '@ant-design/icons';
 import Upload from '~/common-pc/Upload';
 import useSelectedComponent from '../hooks/useSelectedComponent';
-import useUpdateStore from '../hooks/useUpdateStore';
+import { useUpdateStore } from 'simple-redux-store';
 import { Input } from 'antd';
 import { gid } from '~/helper';
-import useSort from '~/hooks/useSort';
+import { useSort } from 'whooks';
 import './MutipleImages.less';
 
 // 动态增删多张图片，并支持排序 , 作为字段使用

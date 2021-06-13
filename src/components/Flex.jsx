@@ -2,10 +2,9 @@ import React, { useEffect, useRef } from 'react';
 import { gid, getSettingDefaultValues, convertJSONToObject } from '~/helper';
 import { message } from 'antd';
 import Sortable from 'sortablejs';
-import { useSelector } from 'react-redux';
 import Renderer from '../Renderer';
 import { getConfigById } from './index';
-import useUpdateStore from '../hooks/useUpdateStore';
+import { useUpdateStore, useSelector } from 'simple-redux-store';
 
 const getClosestComp = (el) => {
   let _c = el;

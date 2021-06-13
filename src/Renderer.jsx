@@ -1,6 +1,6 @@
 import React from 'react';
 import classnames from 'classnames';
-import { useSelector } from 'react-redux';
+import { useSelector } from 'simple-redux-store';
 import { getConfigById } from './components/index';
 import Icon from './Icon';
 import './Renderer.less';

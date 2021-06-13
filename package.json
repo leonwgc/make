@@ -32,7 +32,9 @@
     "react-redux": "^7.2.2",
     "react-router-dom": "^5.2.0",
     "redux-thunk": "^2.3.0",
+    "simple-redux-store": "^0.1.6",
     "sortablejs": "^1.13.0",
+    "whooks": "^0.1.0",
     "zarm": "^2.8.2",
     "zarm-form-render": "^1.0.1"
   },

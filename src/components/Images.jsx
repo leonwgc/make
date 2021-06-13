@@ -22,15 +22,7 @@ export default function Images({
     >
       {images.map((item, idx) => {
         return item ? (
-          <img
-            // onClick={() => {
-            //   if (item.link) {
-            //     location.href = item.link;
-            //   }
-            // }}
-            src={item.url}
-            key={idx}
-          />
+          <img src={item.url} key={idx} />
         ) : (
           <div key={idx}>
             <EmptyImage key={idx} />
