@@ -248,11 +248,17 @@ function MyUpload({ label, tip = '', index, updateStore, selectedComponent }) {
           showUploadList={true}
           accept="image/*"
           onChange={(info) => {
-            getBase64(info.file.originFileObj, (url) => {
-              images[index] = { ...images[index], url: url };
+            if (info.file.originFileObj) {
+              getBase64(info.file.originFileObj, (url) => {
+                images[index] = { ...images[index], url: url };
+                selectedComponent.props.images = [...images];
+                updateStore();
+              });
+            } else {
+              images[index] = undefined;
               selectedComponent.props.images = [...images];
               updateStore();
-            });
+            }
           }}
         >
           {(loading, fileList) => {

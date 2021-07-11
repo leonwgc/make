@@ -1,16 +1,12 @@
+import { getData, setData, removeData } from 'simple-browser-store';
 const key = '__make__tpl';
 
 export const getList = () => {
-  const str = localStorage.getItem(key);
-  let list = [];
-  if (str) {
-    list = JSON.parse(str);
-  }
-  return list;
+  return getData('localStorage', key) || [];
 };
 
 const setList = (list) => {
-  localStorage.setItem(key, JSON.stringify(list));
+  setData('localStorage', key, list);
 };
 
 export const addTpl = (tplData) => {
@@ -20,7 +16,7 @@ export const addTpl = (tplData) => {
 };
 
 export const removeAll = () => {
-  localStorage.removeItem(key);
+  removeData('localStorage', key);
 };
 
 export const remove = (tid) => {
@@ -29,17 +25,13 @@ export const remove = (tid) => {
   setList(list);
 };
 
+const pageKey = '__page__';
+
 export const setPage = (app) => {
   const { name, comps = [], bgColor = '' } = app;
-  localStorage.setItem('page', JSON.stringify({ name, bgColor, comps }));
+  setData('localStorage', pageKey, { name, bgColor, comps });
 };
 
 export const getPage = () => {
-  let str = localStorage.getItem('page');
-
-  try {
-    if (str) return JSON.parse(str);
-  } catch (ex) {
-    return {};
-  }
+  return getData('localStorage', pageKey);
 };

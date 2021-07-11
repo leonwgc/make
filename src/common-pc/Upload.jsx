@@ -16,8 +16,7 @@ export default function Upload({
   data,
   action,
   children,
-  showUploadList = true,
-  showModal = true,
+  showUploadList = false,
   ...antdUploadProps
 }) {
   const [loading, setLoading] = useState(false);
@@ -30,36 +29,13 @@ export default function Upload({
     setPreviewImage(file.url || file.preview);
   };
 
-  const onUploadChange = ({ file, fileList }) => {
+  const onUploadChange = ({ fileList: newFileList, file }) => {
+    onFileListChange(newFileList);
     if (file.status === 'uploading') {
       setLoading(true);
-      return;
-    }
-    if (file.status === 'done') {
+    } else {
       setLoading(false);
-      onFileListChange(
-        fileList.map((file) => {
-          if (file.response) {
-            let res = file.response;
-            if (res.code == '0') {
-              let r = res.result[0];
-              return {
-                url: r.cdnHref,
-                uid: r.id,
-                name: r.fileName,
-              };
-            }
-          } else {
-            return file;
-          }
-        })
-      );
     }
-  };
-
-  const onRemove = (file) => {
-    const list = fileList.filter((f) => f !== file);
-    onFileListChange(list);
   };
 
   return (
@@ -71,7 +47,6 @@ export default function Upload({
         listType="picture-card"
         showUploadList={showUploadList}
         onChange={onUploadChange}
-        onRemove={onRemove}
         onPreview={onPreview}
         multiple={false}
         fileList={fileList}
@@ -79,16 +54,10 @@ export default function Upload({
       >
         {children(loading, fileList)}
       </AntUpload>
-      {showModal ? (
-        <Modal
-          visible={previewImage}
-          title={null}
-          footer={null}
-          onCancel={() => setPreviewImage('')}
-        >
-          <img alt="preview-image" style={{ width: '100%' }} src={previewImage} />
-        </Modal>
-      ) : null}
+
+      <Modal visible={previewImage} title={null} footer={null} onCancel={() => setPreviewImage('')}>
+        <img alt="preview-image" style={{ width: '100%' }} src={previewImage} />
+      </Modal>
     </>
   );
 }

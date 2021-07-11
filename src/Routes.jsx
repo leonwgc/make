@@ -7,7 +7,7 @@ import routes from './RoutesConfig';
 import App from './App';
 import './App.less';
 
-const store = configureStore();
+const store = configureStore(null, true);
 
 const Routes = () => {
   return (

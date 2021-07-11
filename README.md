@@ -5,7 +5,7 @@
 3. 模拟手机预览
 
 #### 技术栈
-1. 打包基于vited (基于vite2)
+1. 打包基于packx, 基于webpack5封装 [https://www.npmjs.com/package/packx](https://www.npmjs.com/package/packx)
 2. 技术栈：react全家桶 react/redux/hooks
 3. 拖拽/排序依赖 [http://www.sortablejs.com/](http://www.sortablejs.com/)
 4. pc端组件基于antd v4 [https://ant.design/index-cn](https://ant.design/index-cn)

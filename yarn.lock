@@ -8149,6 +8149,13 @@ signature_pad@^3.0.0-beta.4:
   resolved "https://registry.npm.taobao.org/signature_pad/download/signature_pad-3.0.0-beta.4.tgz#2a8441559e9f439e7f2f525da3ee630ef973ecf6"
   integrity sha1-KoRBVZ6fQ55/L1Jdo+5jDvlz7PY=
 
+simple-browser-store@^0.1.1:
+  version "0.1.1"
+  resolved "https://registry.nlark.com/simple-browser-store/download/simple-browser-store-0.1.1.tgz#643f2b1da02338ba6d9d901b4ee66fd8dcba613c"
+  integrity sha1-ZD8rHaAjOLptnZAbTuZv2Ny6YTw=
+  dependencies:
+    js-cookie "^2.2.1"
+
 simple-redux-store@latest:
   version "1.0.2"
   resolved "https://registry.nlark.com/simple-redux-store/download/simple-redux-store-1.0.2.tgz#dc66ac46ef3af094673aa74c649b9a497486128c"
