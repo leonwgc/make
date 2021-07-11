@@ -23,10 +23,8 @@ const EditorStage = () => {
         item={app}
         isDesign
         style={{
-          height: 667,
-          width: 375,
-          overflowY: 'scroll',
-          backgroundColor: '#fff',
+          minHeight: 724,
+          width: 379,
           ...style,
         }}
       />
