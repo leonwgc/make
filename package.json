@@ -13,17 +13,16 @@
     "url": "https://github.com/leonwgc/make/issues"
   },
   "scripts": {
-    "start": "vited start -p 3000",
-    "build": "vited build",
+    "start": "packx start -p 3000",
+    "build": "packx build",
     "prepare": "husky install",
     "lint-staged": "lint-staged"
   },
   "dependencies": {
     "ahooks": "^2.9.2",
     "antd": "^4.9.2",
-    "antd-form-render": "^1.0.4",
+    "antd-form-render": "latest",
     "classnames": "^2.2.6",
-    "connected-react-router": "^6.8.0",
     "nanoid": "^3.1.22",
     "react": "^17.0.2",
     "react-color": "^2.19.3",
@@ -31,10 +30,9 @@
     "react-grid-layout": "^1.2.4",
     "react-redux": "^7.2.2",
     "react-router-dom": "^5.2.0",
-    "redux-thunk": "^2.3.0",
-    "simple-redux-store": "^0.1.6",
+    "react-use-lib": "latest",
+    "simple-redux-store": "latest",
     "sortablejs": "^1.13.0",
-    "whooks": "^0.1.0",
     "zarm": "^2.8.2",
     "zarm-form-render": "^1.0.1"
   },
@@ -60,8 +58,8 @@
     "husky": "^6.0.0",
     "less": "^3.0.1",
     "lint-staged": "^10.5.4",
-    "prettier": "^2.2.1",
-    "vited": "^2.1.4"
+    "packx": "^0.4.5",
+    "prettier": "^2.2.1"
   },
   "lint-staged": {
     "*.{js,jsx}": [

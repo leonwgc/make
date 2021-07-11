@@ -5,7 +5,6 @@ import Stage from './EditorStage';
 import PropSetting from './SettingPanel';
 import Footer from './Footer';
 import usePageTitle from './hooks/usePageTitle';
-
 import './App.less';
 
 export default function App({ history }) {

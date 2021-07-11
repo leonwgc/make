@@ -5,7 +5,7 @@ import useSelectedComponent from '../hooks/useSelectedComponent';
 import { useUpdateStore } from 'simple-redux-store';
 import { Input } from 'antd';
 import { gid } from '~/helper';
-import { useSort } from 'whooks';
+import { useSort } from 'react-use-lib';
 import './MutipleImages.less';
 
 // 动态增删多张图片，并支持排序 , 作为字段使用
