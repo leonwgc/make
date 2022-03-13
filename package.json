@@ -13,8 +13,8 @@
     "url": "https://github.com/leonwgc/make/issues"
   },
   "scripts": {
-    "start": "packx start -p 3000",
-    "build": "packx build",
+    "start": "packw start -p 3000",
+    "build": "packw build",
     "prepare": "husky install",
     "lint-staged": "lint-staged"
   },
@@ -38,28 +38,17 @@
     "zarm-form-render": "^1.0.1"
   },
   "devDependencies": {
-    "@babel/cli": "^7.8.4",
-    "@babel/core": "^7.8.7",
-    "@babel/plugin-proposal-class-properties": "^7.8.3",
-    "@babel/plugin-proposal-decorators": "^7.8.3",
-    "@babel/plugin-transform-runtime": "^7.9.6",
-    "@babel/preset-env": "^7.8.7",
-    "@babel/preset-react": "^7.8.3",
-    "@babel/preset-stage-0": "^7.8.3",
     "@commitlint/cli": "^12.1.1",
     "@commitlint/config-conventional": "^12.1.1",
     "@types/react": "^16.8.2",
     "@types/react-dom": "^16.8.0",
     "autoprefixer": "^9.7.6",
-    "babel-eslint": "^10.1.0",
-    "babel-plugin-syntax-dynamic-import": "^6.18.0",
     "eslint": "^6.8.0",
     "eslint-plugin-react": "^7.19.0",
     "eslint-plugin-react-hooks": "^2.5.0",
     "husky": "^6.0.0",
-    "less": "^3.0.1",
     "lint-staged": "^10.5.4",
-    "packx": "^0.4.5",
+    "packw": "~1.0.1",
     "prettier": "^2.2.1"
   },
   "lint-staged": {
