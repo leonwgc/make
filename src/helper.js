@@ -69,3 +69,38 @@ export const convertJSONToObject = (json = '', defaultOnFail = {}) => {
     return defaultOnFail;
   }
 };
+
+// 1已发布  2，已发布 (有草稿未发布 previewDetail 和detail不一样) 3 未发布
+export const getPageStatus = (detail) => {
+  const { status, diff } = detail;
+
+  if (status === 'ONLINE') {
+    return diff ? 2 : 1;
+  }
+  return 3;
+};
+
+export const isOffline = (item) => {
+  return item.status === 'OFFLINE' || item.status === 'DRAFT';
+};
+
+export const getClosestComp = (el, className = 'design-cmp') => {
+  let _c = el;
+  while (_c && !_c.classList.contains(className)) {
+    _c = _c.parentElement;
+  }
+
+  if (_c) {
+    return _c.dataset.id;
+  }
+};
+
+export const filterDupProducts = (products = []) => {
+  let r = [];
+  for (let p of products) {
+    if (!r.some((_ri) => _ri.id === p.id)) {
+      r.push(p);
+    }
+  }
+  return r;
+};

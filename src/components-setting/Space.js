@@ -7,9 +7,9 @@ const Space = {
       type: Radio.Group,
       elProps: {
         options: [
-          { label: '10px', value: 10 },
-          { label: '20px', value: 20 },
-          { label: '30px', value: 30 },
+          { label: '小', value: 10 },
+          { label: '中', value: 20 },
+          { label: '大', value: 30 },
         ],
         defaultValue: 10,
       },

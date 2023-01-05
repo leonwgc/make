@@ -1,27 +1,16 @@
 import React, { useEffect, useRef } from 'react';
-import { gid, getSettingDefaultValues, convertJSONToObject } from '~/helper';
+import { gid, getSettingDefaultValues, convertJSONToObject, getClosestComp } from '../helper';
 import { message } from 'antd';
 import Sortable from 'sortablejs';
 import Renderer from '../Renderer';
 import { getConfigById } from './index';
-import { useUpdateStore, useSelector } from 'simple-redux-store';
-
-const getClosestComp = (el) => {
-  let _c = el;
-  while (_c && !_c.classList.contains('design-cmp')) {
-    _c = _c.parentElement;
-  }
-
-  if (_c) {
-    return _c.dataset.id;
-  }
-};
+import { useUpdateStore, useAppData } from 'simple-redux-store';
 
 const Flex = ({ item = {}, isDesign = false, style = {} }) => {
   const ref = useRef(null);
   let data = item.comps || [];
   let newAddedComponent = null;
-  const app = useSelector((state) => state.app);
+  const app = useAppData();
   const updateStore = useUpdateStore();
 
   const updateData = (data, activeComp = null) => {
@@ -71,7 +60,7 @@ const Flex = ({ item = {}, isDesign = false, style = {} }) => {
                 return;
               }
               const order = cfg.order;
-              const { props = {}, style = {} } = cfg.setting;
+              const { props = {}, style = {} } = cfg.setting || {};
               const defaultProps = getSettingDefaultValues(props);
               const defaultStyles = getSettingDefaultValues(style);
 
@@ -140,20 +129,13 @@ const Flex = ({ item = {}, isDesign = false, style = {} }) => {
     window.addEventListener('click', onClick);
     return () => {
       window.removeEventListener('click', onClick);
+      updateStore({ activeComp: null });
     };
   }, []);
 
-  const onRemove = (e) => {
-    let shell = e.target.parentElement;
-    while (!shell.classList.contains('design-cmp')) {
-      shell = shell.parentElement;
-    }
-
-    if (shell) {
-      const id = shell.dataset.id;
-      data = data.filter((c) => c.id !== id);
-      updateData(data);
-    }
+  const onRemove = (id) => {
+    data = data.filter((c) => c.id !== id);
+    updateData(data);
   };
 
   return (

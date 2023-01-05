@@ -1,5 +1,5 @@
-import React, { useEffect, useState, useRef } from 'react';
-import { Button, Modal, Tabs, Form, Input, Checkbox, Radio, Divider, Switch } from 'antd';
+import React, { useState } from 'react';
+import { Form, Input, Radio, Divider, Switch } from 'antd';
 import FormRenderer from 'antd-form-render';
 import ColorPicker from './ColorPicker';
 import './Title.less';
@@ -11,7 +11,23 @@ export default function Title({ selectedComponent, updateStore }) {
 
   const formLayout = [
     {
-      label: '文本对齐',
+      label: '标题内容',
+      name: 'text',
+      type: Input.TextArea,
+      elProps: {
+        maxLength: 10,
+        showCount: true,
+        autoSize: { minRows: 1, maxRows: 1 },
+        defaultValue: '标题',
+      },
+    },
+    {
+      render() {
+        return <Divider style={{ margin: '16px 0' }} />;
+      },
+    },
+    {
+      label: '对齐方式',
       name: 'textAlign',
       type: Radio.Group,
       elProps: {
@@ -23,7 +39,12 @@ export default function Title({ selectedComponent, updateStore }) {
       },
     },
     {
-      label: '文本样式',
+      render() {
+        return <Divider style={{ margin: '16px 0' }} />;
+      },
+    },
+    {
+      label: '标题粗细',
       name: 'fontWeight',
       type: Radio.Group,
       elProps: {
@@ -35,18 +56,12 @@ export default function Title({ selectedComponent, updateStore }) {
       },
     },
     {
-      label: '标题',
-      name: 'text',
-      type: Input.TextArea,
-      elProps: {
-        maxLength: 10,
-        showCount: true,
-        autoSize: { minRows: 1, maxRows: 1 },
-        defaultValue: '标题',
+      render() {
+        return <Divider style={{ margin: '16px 0' }} />;
       },
     },
     {
-      label: '标题大小',
+      label: '字体大小',
       name: 'fontSize',
       type: Radio.Group,
       elProps: {
@@ -60,8 +75,13 @@ export default function Title({ selectedComponent, updateStore }) {
     },
     {
       render() {
+        return <Divider style={{ margin: '16px 0' }} />;
+      },
+    },
+    {
+      render() {
         return (
-          <div className="my-switch" style={{ margin: '16px 0' }}>
+          <div className="my-switch" style={{ marginTop: '16px 0' }}>
             <label>跳转详情</label>
             <span>
               <Switch
@@ -74,6 +94,7 @@ export default function Title({ selectedComponent, updateStore }) {
                   }
                   setIsUseLink(c);
                 }}
+                size="small"
               />
             </span>
           </div>
@@ -83,9 +104,20 @@ export default function Title({ selectedComponent, updateStore }) {
     {
       render() {
         return isUseLink ? (
-          <Form.Item name="link">
-            <Input />
-          </Form.Item>
+          <div
+            style={{ padding: '12px 12px 16px', margin: '12px -12px -16px', background: '#F0F0F0' }}
+          >
+            <Form.Item name="link">
+              <Input />
+            </Form.Item>
+            <ColorPicker
+              label="自定义箭头颜色"
+              prop="arrowColor"
+              selectedComponent={selectedComponent}
+              updateStore={updateStore}
+              defaultColor="#8C8C8C"
+            />
+          </div>
         ) : null;
       },
     },
@@ -94,32 +126,15 @@ export default function Title({ selectedComponent, updateStore }) {
         return <Divider style={{ margin: '16px 0' }} />;
       },
     },
-
     {
       render() {
         return (
           <ColorPicker
-            label="自定义箭头颜色"
-            prop="arrowColor"
-            selectedComponent={selectedComponent}
-            updateStore={updateStore}
-          />
-        );
-      },
-    },
-    {
-      render() {
-        return <Divider style={{ margin: '16px 0' }} />;
-      },
-    },
-    {
-      render() {
-        return (
-          <ColorPicker
-            label="自定义文本色"
+            label="自定义标题颜色"
             prop="color"
             selectedComponent={selectedComponent}
             updateStore={updateStore}
+            defaultColor="#000"
           />
         );
       },
@@ -131,7 +146,13 @@ export default function Title({ selectedComponent, updateStore }) {
     },
     {
       render() {
-        return <ColorPicker selectedComponent={selectedComponent} updateStore={updateStore} />;
+        return (
+          <ColorPicker
+            selectedComponent={selectedComponent}
+            updateStore={updateStore}
+            defaultColor="#fff"
+          />
+        );
       },
     },
   ];

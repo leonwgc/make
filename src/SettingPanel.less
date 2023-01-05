@@ -1,14 +1,15 @@
+@import (reference) './color';
+
 .prop-setting {
-  background-color: #fff;
   width: 300px;
   height: calc(100vh - 110px);
-  overflow-y: scroll;
+  background-color: #fff;
   opacity: 1;
   transition: all 0.2s ease-in-out;
 
   &.hide {
-    padding: 0;
-    opacity: 0;
+    // padding: 0;
+    // opacity: 0;
   }
 
   > .title {
@@ -31,18 +32,20 @@
       font-weight: 400;
       text-align: right;
       color: #484a4d;
+
+      &:hover {
+        color: @primary-color;
+      }
     }
   }
 
   > .setting {
-    padding: 12px;
-    overflow-y: scroll;
-    .item {
-      height: 750px;
-      -webkit-overflow-scrolling: touch;
-      &::-webkit-scrollbar {
-        display: none;
-      }
+    height: calc(100vh - 160px);
+    padding: 16px 12px;
+    overflow: hidden scroll;
+    -webkit-overflow-scrolling: touch;
+    &::-webkit-scrollbar {
+      display: none;
     }
   }
 }

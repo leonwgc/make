@@ -1,8 +1,8 @@
-import React, { useEffect, useState, useRef } from 'react';
+import React, { useEffect, useState, useRef, useCallback, useMemo } from 'react';
 import { Button, Modal, Tabs, Form, Input, message, Radio, Checkbox, Divider } from 'antd';
 import { SketchPicker } from 'react-color';
 import { PlusOutlined, LoadingOutlined, CloseOutlined, SearchOutlined } from '@ant-design/icons';
-import Upload from '~/common-pc/Upload';
+import Upload from '~/common/Upload';
 import FormRenderer from 'antd-form-render';
 import { getHostPrefix } from '~/utils/host';
 import Icon from '../Icon';
@@ -19,7 +19,7 @@ const map = {
     number: 2,
   },
   image3: {
-    name: '左二右一',
+    name: '左一右二',
     number: 3,
   },
   image31: {
@@ -41,6 +41,11 @@ export default function Images({ selectedComponent, updateStore }) {
     form.resetFields();
   }, [form, selectedComponent]);
 
+  const getArrangeTypeName = () => {
+    const arrangeType = selectedComponent.props.arrangeType || 'image1';
+    return map[arrangeType].name;
+  };
+
   const formLayout = [
     {
       label: '模块样式',
@@ -55,11 +60,24 @@ export default function Images({ selectedComponent, updateStore }) {
       },
     },
     {
-      label: '排列样式',
+      render() {
+        return <Divider style={{ margin: '16px 0' }} />;
+      },
+    },
+    {
+      label: (
+        <span>
+          排列样式
+          <span style={{ fontSize: 14, color: '#18191a', fontWeight: 'bold', marginLeft: 8 }}>
+            {getArrangeTypeName()}
+          </span>
+        </span>
+      ),
       type: Radio.Group,
       name: 'arrangeType',
       itemProps: {
         layout: 'vertical',
+        labelCol: { span: 24 },
       },
       elProps: {
         optionType: 'button',
@@ -102,32 +120,32 @@ export default function Images({ selectedComponent, updateStore }) {
         switch (arrangeType) {
           case 'image1': {
             label1 = '图片';
-            tip1 = '(宽750像素)';
+            tip1 = '(宽1125像素)';
             break;
           }
           case 'image2': {
-            label1 = '左图';
-            label2 = '右图';
-            tip1 = '(宽375像素)';
-            tip2 = '(宽375像素)';
+            label1 = '图片1';
+            label2 = '图片2';
+            tip1 = '(宽562像素)';
+            tip2 = '(宽562像素)';
             break;
           }
           case 'image3': {
             label1 = '左图';
             label2 = '右上图';
             label3 = '右下图';
-            tip1 = '(宽375像素,高500像素)';
-            tip2 = '(宽375像素,高250像素)';
-            tip3 = '(宽375像素,高250像素)';
+            tip1 = '(宽562像素)';
+            tip2 = '(宽562像素，高为左图一半)';
+            tip3 = '(宽562像素，高为左图一半)';
             break;
           }
           case 'image31': {
             label1 = '右图';
             label2 = '左上图';
             label3 = '左下图';
-            tip1 = '(宽375像素,高500像素)';
-            tip2 = '(宽375像素,高250像素)';
-            tip3 = '(宽375像素,高250像素)';
+            tip1 = '(宽562像素)';
+            tip2 = '(宽562像素，高为右图一半)';
+            tip3 = '宽562像素，高为右图一半)';
             break;
           }
           case 'image4': {
@@ -135,10 +153,10 @@ export default function Images({ selectedComponent, updateStore }) {
             label2 = '图片2';
             label3 = '图片3';
             label4 = '图片4';
-            tip1 = '(宽188像素)';
-            tip2 = '(宽188像素)';
-            tip3 = '(宽188像素)';
-            tip4 = '(宽188像素)';
+            tip1 = '(宽282像素)';
+            tip2 = '(宽282像素)';
+            tip3 = '(宽282像素)';
+            tip4 = '(宽282像素)';
             break;
           }
         }
@@ -185,7 +203,19 @@ export default function Images({ selectedComponent, updateStore }) {
     },
     {
       render() {
-        return <ColorPicker selectedComponent={selectedComponent} updateStore={updateStore} />;
+        return <Divider style={{ margin: '16px 0' }} />;
+      },
+    },
+    {
+      render() {
+        return (
+          <ColorPicker
+            selectedComponent={selectedComponent}
+            updateStore={updateStore}
+            placement="bottom"
+            defaultColor="#fff"
+          />
+        );
       },
     },
     {
@@ -196,8 +226,8 @@ export default function Images({ selectedComponent, updateStore }) {
     {
       render() {
         return (
-          <Form.Item name="hideMargin" valuePropName="checked">
-            <Checkbox>隐藏该模块下方的白色间隙</Checkbox>
+          <Form.Item name="hideMargin" valuePropName="checked" initialValue={false}>
+            <Checkbox>隐藏该模块下方的间隙</Checkbox>
           </Form.Item>
         );
       },
@@ -220,7 +250,7 @@ export default function Images({ selectedComponent, updateStore }) {
       form={form}
       onValuesChange={onValuesChange}
       initialValues={initialValues}
-      layout="vertical"
+      layout="horizontal"
       className="image-setting"
     >
       <div className="item">
@@ -244,21 +274,19 @@ function MyUpload({ label, tip = '', index, updateStore, selectedComponent }) {
     <div className="image-upload">
       <div className="l">
         <Upload
+          data={{ storeType: 'I', type: '29', creator: 'system' }}
+          action={`https://${getHostPrefix()}api.zuifuli.com/api/customer/v2/attach/upload4NoLogin`}
           fileList={_fl}
           showUploadList={true}
           accept="image/*"
-          onChange={(info) => {
-            if (info.file.originFileObj) {
-              getBase64(info.file.originFileObj, (url) => {
-                images[index] = { ...images[index], url: url };
-                selectedComponent.props.images = [...images];
-                updateStore();
-              });
+          onFileListChange={(fileList) => {
+            if (!fileList.length) {
+              images[index] = { ...images[index], url: '' };
             } else {
-              images[index] = undefined;
-              selectedComponent.props.images = [...images];
-              updateStore();
+              images[index] = { ...images[index], url: fileList[0].url };
             }
+            selectedComponent.props.images = [...images];
+            updateStore();
           }}
         >
           {(loading, fileList) => {
@@ -288,10 +316,4 @@ function MyUpload({ label, tip = '', index, updateStore, selectedComponent }) {
       </div>
     </div>
   );
-}
-
-function getBase64(img, callback) {
-  const reader = new FileReader();
-  reader.addEventListener('load', () => callback(reader.result));
-  reader.readAsDataURL(img);
 }

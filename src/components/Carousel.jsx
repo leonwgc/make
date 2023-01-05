@@ -1,11 +1,11 @@
 import React from 'react';
 import { Carousel } from 'zarm';
+import EmptyImage from './EmptyImage';
 import './Carousel.less';
 import cat from './images/cat.jpg';
 import dog from './images/dog.jpg';
 
 const defaults = [{ url: cat }, { url: dog }, { url: cat }, { url: dog }];
-
 export default function MyCarousel({
   styleType = 'card', // 模块样式
   bgColor,
@@ -29,7 +29,7 @@ export default function MyCarousel({
         );
       });
     } else {
-      return <div></div>;
+      return <EmptyImage height={height} />;
     }
   };
 

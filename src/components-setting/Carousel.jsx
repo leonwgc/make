@@ -1,5 +1,5 @@
-import React, { useEffect, useState, useRef } from 'react';
-import { Button, Modal, Tabs, Form, Input, Checkbox, Radio, Divider } from 'antd';
+import React from 'react';
+import { Form, Checkbox, Radio, Divider } from 'antd';
 import FormRenderer from 'antd-form-render';
 import MutipleImages from '../prop-setting-components/MutipleImages';
 import ColorPicker from './ColorPicker';
@@ -34,16 +34,11 @@ export default function Carousel({ selectedComponent, updateStore }) {
             title={
               <div className="image-upload-title">
                 <span className="t">上传图片</span>
-                <span className="d">(宽750像素，高300像素)</span>
+                <span className="d">(宽1125像素，高412像素 大小不超过3M)</span>
               </div>
             }
           />
         ); // 动态添加多张图片
-      },
-    },
-    {
-      render() {
-        return <ColorPicker selectedComponent={selectedComponent} updateStore={updateStore} />;
       },
     },
     {
@@ -54,8 +49,25 @@ export default function Carousel({ selectedComponent, updateStore }) {
     {
       render() {
         return (
-          <Form.Item name="hideMargin" valuePropName="checked">
-            <Checkbox>隐藏该模块下方的白色间隙</Checkbox>
+          <ColorPicker
+            selectedComponent={selectedComponent}
+            updateStore={updateStore}
+            placement="bottom"
+            defaultColor="#fff"
+          />
+        );
+      },
+    },
+    {
+      render() {
+        return <Divider style={{ margin: '16px 0' }} />;
+      },
+    },
+    {
+      render() {
+        return (
+          <Form.Item name="hideMargin" valuePropName="checked" initialValue={false}>
+            <Checkbox>隐藏该模块下方的间隙</Checkbox>
           </Form.Item>
         );
       },

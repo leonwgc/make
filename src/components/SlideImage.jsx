@@ -1,30 +1,32 @@
 import React from 'react';
+import { ScrollBox, Space } from 'react-uni-comps';
+import EmptyImage from './EmptyImage';
 import './SlideImage.less';
-import cat from './images/cat.jpg';
-import dog from './images/dog.jpg';
 
-const defaults = [{ url: cat }, { url: dog }, { url: cat }, { url: dog }];
+export default function SlideImage({ images = [], hideMargin = false, bgColor }) {
+  const renderImages = () => {
+    if (images.length) {
+      return images.map((item, idx) => {
+        return <img src={item.url} key={idx} className="img" style={{ width: 100 }} />;
+      });
+    } else {
+      return [1, 2, 3, 4, 5, 6, 7].map((item, idx) => {
+        return <EmptyImage width={100} height={100} />;
+      });
+    }
+  };
 
-export default function SlideImage({ images = [...defaults], hideMargin = false, bgColor }) {
   return (
-    <div
-      className={`zfl-slide-image`}
-      style={{ marginBottom: `${hideMargin ? 0 : 5}px`, backgroundColor: bgColor }}
+    // <div
+    //   className={`zfl-slide-image`}
+    //   style={{ paddingBottom: `${hideMargin ? 0 : 5}px`, backgroundColor: bgColor }}
+    // >
+    //   {renderImages()}
+    // </div>
+    <ScrollBox
+      style={{ height: 100, paddingBottom: `${hideMargin ? 0 : 5}px`, backgroundColor: bgColor }}
     >
-      {images.map((item, idx) => {
-        return (
-          <div
-            // onClick={() => {
-            //   if (item.link) {
-            //     location.href = item.link;
-            //   }
-            // }}
-            className="img"
-            key={idx}
-            style={{ backgroundImage: `url(${item.url})` }}
-          ></div>
-        );
-      })}
-    </div>
+      {<Space size={9}>{renderImages()}</Space>}
+    </ScrollBox>
   );
 }

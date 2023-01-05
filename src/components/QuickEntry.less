@@ -1,0 +1,45 @@
+.ctl-carousel {
+  .za-carousel__pagination {
+    bottom: 0;
+
+    .za-carousel__pagination__item {
+      width: 6px;
+      height: 6px;
+      background: #bfbfbf;
+      border-radius: 50%;
+
+      &.za-carousel__pagination__item--active {
+        width: 14px;
+        background: #ff5d0d;
+        border-radius: 3px;
+      }
+    }
+  }
+
+  .quick-entry {
+    display: flex;
+    flex-flow: row wrap;
+    padding: 16px 0;
+    .entry-item {
+      display: flex;
+      flex-flow: column nowrap;
+      justify-content: space-between;
+      align-items: center;
+      height: 53px;
+      font-size: 12px;
+      font-family: PingFangSC, PingFangSC-Regular;
+      font-weight: 400;
+      text-align: center;
+      color: #333333;
+      line-height: 17px;
+      text-align: center;
+      > img {
+        width: 28px;
+      }
+      &.bold {
+        font-family: PingFangSC, PingFangSC-Medium;
+        font-weight: bold;
+      }
+    }
+  }
+}

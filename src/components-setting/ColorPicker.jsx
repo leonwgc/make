@@ -8,6 +8,8 @@ export default function ColorPicker({
   updateStore,
   prop = 'bgColor',
   label = '自定义背景色',
+  placement = 'top',
+  defaultColor = '#f7f7f7',
 }) {
   let color = selectedComponent.props[prop];
   const [checked, setChecked] = useState(!!color);
@@ -19,7 +21,7 @@ export default function ColorPicker({
         checked={checked}
         onChange={(e) => {
           const { checked } = e.target;
-          selectedComponent.props[prop] = !checked ? '' : '#f7f7f7';
+          selectedComponent.props[prop] = !checked ? '' : defaultColor;
           updateStore();
           setChecked(checked);
         }}
@@ -29,7 +31,7 @@ export default function ColorPicker({
       {checked ? (
         <div className="btn" style={{ background: color }} onClick={() => setVisible(true)}>
           {visible ? (
-            <div>
+            <div className={`${placement}`}>
               <SketchPicker
                 color={color}
                 onChangeComplete={(c) => {

@@ -1,13 +1,14 @@
 .zfl-image {
-  min-height: 50px;
   font-size: 0;
-
   &.image1 {
     > img {
       width: 100%;
     }
     &.card {
       padding: 0 12px;
+      img {
+        border-radius: 9px;
+      }
     }
   }
 
@@ -15,15 +16,13 @@
     &.full {
       > img {
         width: 50%;
-        height: 150px;
       }
     }
     &.card {
-      display: flex;
-      margin: 0 12px;
+      padding: 0 12px;
       > img {
         width: 171px;
-        height: 137px;
+        border-radius: 6px;
         &:first-child {
           margin-right: 9px;
         }
@@ -36,27 +35,28 @@
     &.full {
       > img {
         width: 50%;
-        height: 125px;
+        // height: 94px;
         float: left;
         &:first-child {
-          height: 250px;
+          // height: 188px;
         }
       }
     }
     &.card {
       width: 100%;
-      margin: 0 12px;
+      padding: 0 12px;
       overflow: hidden;
 
       > img {
         width: 171px;
         float: left;
+        border-radius: 6px;
         &:first-child {
-          height: 228px;
+          // height: 171px;
           margin-right: 9px;
         }
         &:not(:first-child) {
-          height: 110px;
+          // height: 81px;
         }
         &:last-child {
           margin-top: 9px;
@@ -70,27 +70,28 @@
     &.full {
       > img {
         width: 50%;
-        height: 125px;
+        // height: 94px;
         float: right;
         &:first-child {
-          height: 250px;
+          // height: 188px;
         }
       }
     }
     &.card {
-      width: 351px;
-      margin: 0 12px;
+      width: 100%;
+      padding: 0 12px;
       overflow: hidden;
 
       > img {
         width: 171px;
         float: right;
+        border-radius: 6px;
         &:first-child {
-          height: 228px;
+          // height: 171px;
           margin-left: 9px;
         }
         &:not(:first-child) {
-          height: 110px;
+          // height: 81px;
         }
         &:last-child {
           margin-top: 9px;
@@ -102,10 +103,17 @@
   &.image4 {
     > img {
       width: 25%;
-      min-height: 140px;
     }
     &.card {
-      margin: auto 12px;
+      padding: 0 12px;
+      img {
+        width: 81px;
+        margin-right: 9px;
+        border-radius: 6px;
+        &:nth-child(4) {
+          margin-right: 0;
+        }
+      }
     }
   }
 }

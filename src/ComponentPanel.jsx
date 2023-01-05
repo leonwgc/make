@@ -1,16 +1,19 @@
-import React, { useState } from 'react';
-import { useSelector } from 'simple-redux-store';
+import React, { useReducer, useState } from 'react';
+import { Tabs, Radio } from 'antd';
 import ComponentSelectList from './ComponentSelectList';
-import { components } from './components/index';
+import { components, productComponents, otherComponents } from './components/index';
+import TplSelectList from './TplSelectList';
 import ErrorBoundary from './ErrorBoundary';
 import Icon from './Icon';
 import classnames from 'classnames';
 import './ComponentPanel.less';
+import { useAppData } from 'simple-redux-store';
 
 const ComponentPanel = () => {
-  const app = useSelector((state) => state.app);
+  const app = useAppData();
 
-  const [activeTypes, setActiveTypes] = useState([0]); // 默认展开的type
+  const [type, setType] = useState('0');
+  const [activeTypes, setActiveTypes] = useState([0, 1, 2]); // 默认展开的type
 
   // 模块
   const renderComponents = (data = []) => {
@@ -43,26 +46,57 @@ const ComponentPanel = () => {
     {
       title: (
         <span>
-          <Icon type={'icondown'} className="icon"></Icon> 图文模块
+          <Icon type={'iconarrow_down_outlined_regular'} className="icon"></Icon> 图文模块
         </span>
       ),
       components,
     },
-
+    {
+      title: (
+        <span>
+          <Icon type={'iconarrow_down_outlined_regular'} className="icon"></Icon> 商品模块
+        </span>
+      ),
+      components: productComponents,
+    },
     // {
     //   title: (
     //     <span>
-    //       <Icon type={'icondown'} className="icon"></Icon> zarm表单模块
+    //       <Icon type={'iconarrow_down_outlined_regular'} className="icon"></Icon> 文化模块
     //     </span>
     //   ),
-    //   components: formComponents,
+    //   components: whComponents,
     // },
+    {
+      title: (
+        <span>
+          <Icon type={'iconarrow_down_outlined_regular'} className="icon"></Icon> 定制模块
+        </span>
+      ),
+      components: otherComponents,
+    },
   ];
 
   return (
     <div className="component-panel">
+      <div className="type-select">
+        <Radio.Group
+          value={type}
+          onChange={(e) => {
+            setType(e.target.value);
+          }}
+        >
+          <Radio.Button value="0" style={{ width: 86, textAlign: 'center' }}>
+            组件
+          </Radio.Button>
+          <Radio.Button value="1">我的组件</Radio.Button>
+        </Radio.Group>
+      </div>
+
       <ErrorBoundary>
-        <div className="select-list">{renderComponents(data)}</div>
+        <div className="select-list">
+          {type == '0' ? renderComponents(data) : <TplSelectList />}
+        </div>
       </ErrorBoundary>
     </div>
   );

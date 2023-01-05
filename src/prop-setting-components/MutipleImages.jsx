@@ -1,12 +1,13 @@
-import React, { useRef } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import { PlusOutlined, LoadingOutlined } from '@ant-design/icons';
-import Upload from '~/common-pc/Upload';
+import Upload from '~/common/Upload';
 import useSelectedComponent from '../hooks/useSelectedComponent';
-import { useUpdateStore } from 'simple-redux-store';
-import { Input } from 'antd';
+import { getHostPrefix } from '~/utils/host';
+import { Input, Form } from 'antd';
 import { gid } from '~/helper';
 import useSort from '~/hooks/useSort';
 import './MutipleImages.less';
+import { useUpdateStore } from 'simple-redux-store';
 
 // 动态增删多张图片，并支持排序 , 作为字段使用
 
@@ -28,6 +29,10 @@ export default function MutipleImages({ title }) {
         selectedComponent.props.images = [..._images];
         updateStore();
       },
+    },
+    onSort: function (/**Event*/ evt) {
+      // same properties as onEnd
+      var a = evt;
     },
   });
 
@@ -52,35 +57,35 @@ export default function MutipleImages({ title }) {
     <div className="image-input">
       <div>{title}</div>
       <Upload
+        data={{ storeType: 'I', type: '29', creator: 'system' }}
+        action={`https://${getHostPrefix()}api.zuifuli.com/api/customer/v2/attach/upload4NoLogin`}
         fileList={fileList}
         showUploadList={false}
         accept="image/*"
-        onChange={(info) => {
-          getBase64(info.file.originFileObj, (url) => {
-            images.push({
-              url,
-              link: '',
-            });
-            selectedComponent.props.images = [...images];
-            updateStore();
+        onFileListChange={(fileList) => {
+          let lastFile = fileList[fileList.length - 1];
+          images.push({
+            url: lastFile.url,
+            link: '',
           });
+          selectedComponent.props.images = [...images];
+          updateStore();
         }}
       >
-        {(loading) => {
+        {(loading, fileList) => {
           return (
-            <div style={{ fontSize: 20, color: '#909399' }}>
+            <div style={{ fontSize: 24, color: '#909399' }}>
               {loading ? <LoadingOutlined /> : <PlusOutlined />}
             </div>
           );
         }}
       </Upload>
-
       <div ref={ref} className="image-show-list">
         {images.map((image, idx) => {
           return (
             <div className="image-show" title="拖动图片排序" key={image.id} data-id={image.id}>
-              <div className="l">
-                <img src={image.url} width={72} height={72} />
+              <div className="l" style={{ backgroundImage: `url(${image.url})` }}>
+                {/* <img src={image.url} width={72} /> */}
               </div>
               <div className="r">
                 <div className="text">
@@ -112,9 +117,4 @@ export default function MutipleImages({ title }) {
       </div>
     </div>
   );
-}
-function getBase64(img, callback) {
-  const reader = new FileReader();
-  reader.addEventListener('load', () => callback(reader.result));
-  reader.readAsDataURL(img);
 }

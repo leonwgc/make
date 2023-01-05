@@ -33,6 +33,7 @@
     "simple-browser-store": "^1.0.0",
     "simple-redux-store": "~1.2.0",
     "sortablejs": "^1.13.0",
+    "xhr-fetch-lib": "^1.3.0",
     "zarm": "^2.8.2",
     "zarm-form-render": "^1.0.1"
   },

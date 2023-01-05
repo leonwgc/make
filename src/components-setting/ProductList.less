@@ -1,0 +1,80 @@
+.s-product-list {
+  width: 300px;
+  -webkit-overflow-scrolling: touch;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+
+  > .s-product-item {
+    width: 276px;
+    opacity: 1;
+    background: #ffffff;
+    border: 1px solid #f0f0f0;
+    padding: 6px;
+    margin-bottom: 6px;
+    font-size: 12px;
+    cursor: move;
+    > .top {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 8px;
+    }
+    > .detail {
+      display: flex;
+      > .pic {
+        width: 72px;
+        height: 72px;
+        opacity: 1;
+        margin-right: 8px;
+
+        > img {
+          max-width: 100%;
+        }
+      }
+      > .info {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+
+        > .name {
+          width: 190px;
+          height: 16px;
+          font-family: PingFangSC, PingFangSC-Regular;
+          font-weight: 400;
+          text-align: left;
+          color: #4d4d4d;
+          line-height: 16px;
+          text-overflow: ellipsis;
+          overflow: hidden;
+        }
+        > .desc {
+          font-size: 12px;
+          font-family: PingFangSC, PingFangSC-Regular;
+          color: #bfbfbf;
+          line-height: 16px;
+        }
+        > .price {
+          span {
+            font-size: 12px;
+            font-family: PingFangSC, PingFangSC-Regular;
+            color: #4d4d4d;
+            line-height: 16px;
+            margin-right: 12px;
+          }
+        }
+        > div {
+          color: #8c8c8c;
+        }
+      }
+    }
+  }
+}
+
+.product-list-edit-modal {
+  .ant-form-item {
+    margin-bottom: 12px;
+  }
+  .ant-upload-list-picture-card-container {
+    margin-bottom: 0;
+  }
+}

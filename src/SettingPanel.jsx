@@ -1,21 +1,39 @@
 import React, { useEffect, useState } from 'react';
-import { Form } from 'antd';
+import { Tabs, Form } from 'antd';
 import FormRenderer from 'antd-form-render';
 import useSelectedComponent from './hooks/useSelectedComponent';
-import { useUpdateStore } from 'simple-redux-store';
 import { getConfigById } from './components/index';
+import SaveAsTemplate from './SaveAsTemplate';
 import './SettingPanel.less';
+import { useUpdateStore, useAppData } from 'simple-redux-store';
+
+const { TabPane } = Tabs;
 
 function SettingPanel() {
   const [form] = Form.useForm();
   const comp = useSelectedComponent();
+  const app = useAppData();
   const updateStore = useUpdateStore();
+  const [tab, setTab] = useState('0');
+  const [hasProps, setHasProps] = useState(false);
+  const [hasStyle, setHasStyle] = useState(false);
+
+  let cfg = {};
 
   useEffect(() => {
     if (comp) {
       form.resetFields();
+      const { cid } = comp;
+      cfg = getConfigById(cid);
+      let { style = {}, props = {} } = cfg.setting || {};
+      const hasStyle = Object.keys(style).length;
+      const hasProps = Object.keys(props).length;
+      setHasProps(hasProps);
+      setHasStyle(hasStyle);
+      const tab = hasProps ? '0' : hasStyle ? '1' : '0';
+      setTab(tab);
     }
-  }, [comp, form]);
+  }, [comp]);
 
   if (!comp) {
     return <div className="prop-setting hide"></div>;
@@ -23,8 +41,8 @@ function SettingPanel() {
 
   const initValues = { ...comp.props, ...comp.style };
   const { cid } = comp;
-  const cfg = getConfigById(cid);
-  let { props = {}, style = {} } = cfg.setting;
+  cfg = getConfigById(cid);
+  let { props = {}, style = {} } = cfg.setting || {};
   const propFields = Object.keys(props);
   const styleFields = Object.keys(style);
 
@@ -63,15 +81,11 @@ function SettingPanel() {
   const renderPanel = () => {
     const type = cfg.setting;
     if (typeof type === 'function') {
-      return (
-        <div className="item">
-          {React.createElement(type, {
-            key: comp.id,
-            selectedComponent: comp,
-            updateStore,
-          })}
-        </div>
-      );
+      return React.createElement(type, {
+        key: comp.id,
+        selectedComponent: comp,
+        updateStore,
+      });
     } else {
       return (
         <Form
@@ -91,7 +105,10 @@ function SettingPanel() {
 
   return (
     <div className="prop-setting">
-      <div className="title">{cfg.name}</div>
+      <div className="title">
+        {cfg.name}
+        <SaveAsTemplate updateStore={updateStore} comp={comp} />
+      </div>
       <div className="setting">{renderPanel()}</div>
     </div>
   );
