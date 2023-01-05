@@ -1,33 +1,35 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import FormRenderer from 'antd-form-render';
-import { useSelector } from 'simple-redux-store';
+import { useAppData } from 'simple-redux-store';
 import * as storage from './storage';
 import { gid } from './helper';
 import { Modal, Form, Input, message } from 'antd';
 import { getConfigById } from './components/index';
 
-export default function SaveAsTemplate({ updateStore, comp }) {
-  const [tplForm] = Form.useForm();
-  const app = useSelector((state) => state.app);
+const tplFormLayout = [
+  {
+    type: Input,
+    label: '模板名称',
+    placeholder: '请输入',
+    rules: [{ required: true, message: '请填写模板名称' }],
+    name: 'name',
+  },
+];
 
-  const tplFormLayout = [
-    {
-      type: Input,
-      label: '模板名称',
-      placeholder: '请输入',
-      rules: [{ required: true, message: '请填写模板名称' }],
-      name: 'name',
-    },
-  ];
-  const saveAsTpl = (formData) => {
+export default function SaveAsTemplate({ updateStore, comp }) {
+  const [form] = Form.useForm();
+  const app = useAppData();
+
+  const saveAsTpl = ({ name = '' }) => {
     storage.addTpl({
-      comp,
+      tpl: JSON.stringify(comp),
       cid: comp.cid,
-      ...formData,
-      tid: gid(),
+      name,
+      tplId: gid(),
     });
-    updateStore({ showTplDlg: false, _f: Math.random() });
-    tplForm.resetFields();
+
+    updateStore({ showTplDlg: false });
+    form.resetFields();
     message.success('保存成功');
   };
 
@@ -42,12 +44,13 @@ export default function SaveAsTemplate({ updateStore, comp }) {
         onCancel={() => {
           updateStore({ showTplDlg: false });
         }}
-        onOk={() => tplForm.submit()}
+        onOk={() => form.submit()}
       >
-        <Form form={tplForm} onFinish={saveAsTpl} layout="vertical">
+        <Form form={form} onFinish={saveAsTpl} layout="vertical">
           <FormRenderer layoutData={tplFormLayout}></FormRenderer>
         </Form>
       </Modal>
+
       {!isConfig ? (
         <span className="save-cTpl" onClick={() => updateStore({ showTplDlg: true })}>
           保存至我的模版

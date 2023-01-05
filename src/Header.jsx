@@ -1,12 +1,12 @@
 import React from 'react';
-import { Button, Modal, Space, Form, Input, message } from 'antd';
+import { Modal, Form } from 'antd';
 import FormRenderer from 'antd-form-render';
-import { EditOutlined } from '@ant-design/icons';
 import { useUpdateStore, useSelector } from 'simple-redux-store';
-import { showError, showSuccess } from './msg';
+import { showSuccess } from './msg';
 import ColorPicker from './ColorPicker';
-import * as service from './storage';
+import * as storage from './storage';
 import './Header.less';
+import { Icon, Button, Input, Space } from 'react-uni-comps';
 
 export default function Header() {
   const app = useSelector((state) => state.app);
@@ -28,16 +28,15 @@ export default function Header() {
 
   const renameSave = ({ name }) => {
     app.name = name;
-    service.setPage(app);
+    storage.setPage(app);
     updateStore({ showRenameDlg: false });
     showSuccess('保存成功');
   };
 
   const bgColorSave = (color) => {
     app.bgColor = color;
-    service.setPage(app);
+    storage.setPage(app);
     updateStore();
-    message.success('保存成功');
   };
 
   return (
@@ -62,7 +61,10 @@ export default function Header() {
       </div>
       <div className="right-part">
         <Space size={12}>
-          <Button icon={<EditOutlined />} onClick={() => updateStore({ showRenameDlg: true })}>
+          <Button
+            icon={<Icon type="uc-icon-edit" />}
+            onClick={() => updateStore({ showRenameDlg: true })}
+          >
             重命名
           </Button>
           <ColorPicker color={app.bgColor} callback={bgColorSave} />

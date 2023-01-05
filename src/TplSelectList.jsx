@@ -1,14 +1,12 @@
-import React, { useEffect, useRef, useState, useCallback } from 'react';
-import dayjs from 'dayjs';
+import React, { useEffect, useRef } from 'react';
 import { Popconfirm } from 'antd';
 import { getConfigById } from './components/index';
 import DesignRenderer from './components/DesignRenderer';
 import { Icon } from 'react-uni-comps';
-import { gid, convertJSONToObject } from './helper';
-import * as service from './service';
+import * as storage from './storage';
 import useSort from '~/hooks/useSort';
 import './TplSelectList.less';
-import { showError, showSuccess } from './msg';
+import { showSuccess } from './msg';
 import { useUpdateStore, useAppData } from 'simple-redux-store';
 
 export default function TplSelectList() {
@@ -16,17 +14,11 @@ export default function TplSelectList() {
   const updateStore = useUpdateStore();
   const ref = useRef(null);
 
-  const fetchList = () => {
-    service.getMyTplList().then(({ result = [] }) => {
-      app.tplList = result;
-      updateStore();
-    });
-  };
-
   const { tplList = [] } = app;
 
   useEffect(() => {
-    fetchList();
+    app.tplList = storage.getTplList();
+    updateStore();
   }, []);
 
   useSort(ref, {
@@ -39,48 +31,37 @@ export default function TplSelectList() {
 
   return (
     <ul ref={ref} className="tpl-select-list">
-      {tplList
-        .sort((a, b) => +dayjs(b.gmtModified) - +dayjs(a.gmtModified))
-        .map((item, idx) => {
-          const detail = convertJSONToObject(item.detail, null);
-          if (!detail) {
-            return null;
-          }
-          let c = getConfigById(detail.cid) || {};
+      {tplList.map((item, idx) => {
+        let c = getConfigById(item.cid) || {};
 
-          return (
-            <li key={idx} data-cid={detail.cid} data-tpl={item.detail} className="cmp panel-cmp">
-              <DesignRenderer
-                iconName={c.icon}
-                label={
-                  <div className="text" title={item.name}>
-                    <div>{item.name}</div>
-                    <div>{dayjs(item.gmtModified).format('YYYY.MM.DD')} 保存</div>
-                  </div>
-                }
-                type="tpl"
-                deleteNode={
-                  <Popconfirm
-                    title="确定删除此组件？"
-                    onConfirm={() => {
-                      service
-                        .deleteMyTpl(item.id)
-                        .then(() => {
-                          fetchList();
-                          showSuccess('删除成功');
-                        })
-                        .catch(showError);
-                    }}
-                    okText="确定"
-                    cancelText="取消"
-                  >
-                    <Icon type={'icondelete'} className="anticon-delete"></Icon>
-                  </Popconfirm>
-                }
-              />
-            </li>
-          );
-        })}
+        return (
+          <li key={idx} data-cid={item.cid} data-tpl={item.tpl} className="cmp panel-cmp">
+            <DesignRenderer
+              iconName={c.icon}
+              label={
+                <div className="text" title={item.name}>
+                  <div>{item.name}</div>
+                </div>
+              }
+              type="tpl"
+              deleteNode={
+                <Popconfirm
+                  title="确定删除此组件？"
+                  onConfirm={() => {
+                    storage.removeTpl(item.tplId);
+                    fetchList();
+                    showSuccess('删除成功');
+                  }}
+                  okText="确定"
+                  cancelText="取消"
+                >
+                  <Icon type={'icondelete'} className="anticon-delete"></Icon>
+                </Popconfirm>
+              }
+            />
+          </li>
+        );
+      })}
     </ul>
   );
 }

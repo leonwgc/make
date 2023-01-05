@@ -65,7 +65,7 @@ export default function Product({
       {renderTabs()}
       <div className={`${arrangeType}`}>
         {plist.map((item, idx) => {
-          return (!inStage && item.id) || inStage ? (
+          return (
             <ProductItem
               key={idx}
               data={item}
@@ -79,7 +79,7 @@ export default function Product({
               btnText={btnText}
               showBtn={showBtn}
             ></ProductItem>
-          ) : null;
+          );
         })}
       </div>
     </div>

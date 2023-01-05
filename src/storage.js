@@ -1,28 +1,35 @@
 import { getData, setData, removeData } from 'simple-browser-store';
 const key = '__make__tpl';
 
-export const getList = () => {
-  return getData('localStorage', key) || [];
+const isEmptyObj = (obj) => Object.keys(obj).length === 0;
+
+export const getTplList = () => {
+  const data = getData('localStorage', key);
+  if (isEmptyObj(data)) {
+    return [];
+  }
+
+  return data.list;
 };
 
-const setList = (list) => {
-  setData('localStorage', key, list);
+const setTplList = (list) => {
+  setData('localStorage', key, { list });
 };
 
 export const addTpl = (tplData) => {
-  const list = getList();
+  const list = getTplList();
   list.push(tplData);
-  setList(list);
+  setTplList(list);
 };
 
 export const removeAll = () => {
   removeData('localStorage', key);
 };
 
-export const remove = (tid) => {
-  let list = getList();
-  list = list.filter((item) => item.tid !== tid);
-  setList(list);
+export const removeTpl = (tplId) => {
+  let list = getTplList();
+  list = list.filter((item) => item.tplId !== tplId);
+  setTplList(list);
 };
 
 const pageKey = '__page__';

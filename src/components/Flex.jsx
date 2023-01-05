@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useCallback } from 'react';
 import { gid, getSettingDefaultValues, convertJSONToObject, getClosestComp } from '../helper';
 import { message } from 'antd';
 import Sortable from 'sortablejs';

@@ -14,7 +14,7 @@ export default function EmptyImage({ width = '100%', height = 150 }) {
         backgroundSize: '48px 48px',
         backgroundRepeat: 'no-repeat',
         // backgroundColor: '#f0f0f0',
-        fontSize: 60,
+        fontSize: 30,
         color: '#004bcc',
         display: 'flex',
         justifyContent: 'center',
