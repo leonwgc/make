@@ -2,7 +2,7 @@ import React from 'react';
 import './H5Header.less';
 
 export default function H5Header({ bgImage, hasSearchBar = true, isShowMoney = true }) {
-  bgImage = bgImage || 'https://static.zuifuli.com/images/make/header_img.png';
+  bgImage = bgImage || 'https://static.xxx.com/images/make/header_img.png';
   return (
     <div className="home-page" style={{ backgroundImage: `url(${bgImage})` }}>
       <div className="sig"></div>

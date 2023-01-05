@@ -227,7 +227,7 @@ function MyUpload({ value, onChange }) {
   return (
     <Upload
       data={{ storeType: 'I', type: '29', creator: 'system' }}
-      action={`https://${getHostPrefix()}api.zuifuli.com/api/customer/v2/attach/upload4NoLogin`}
+      action={`https://${getHostPrefix()}api.xxx.com/api/customer/v2/attach/upload4NoLogin`}
       fileList={fileList}
       showUploadList={true}
       accept="image/*"

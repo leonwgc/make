@@ -1,6 +1,6 @@
 import React, { useEffect, useRef } from 'react';
 import Sortable from 'sortablejs';
-import DesignRenderer from './components/DesignRenderer';
+import TplComp from './components/TplComp';
 
 export default function ComponentSelectList({ components = [] }) {
   const ref = useRef(null);
@@ -25,7 +25,7 @@ export default function ComponentSelectList({ components = [] }) {
     <ul ref={ref}>
       {components.map((item, idx) => (
         <li key={idx} data-cid={item.cid} className="cmp panel-cmp">
-          <DesignRenderer label={item.name} iconName={item.icon} />
+          <TplComp label={item.name} iconName={item.icon} />
         </li>
       ))}
     </ul>

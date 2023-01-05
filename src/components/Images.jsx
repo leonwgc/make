@@ -37,17 +37,7 @@ export default function Images({
     >
       {images.map((item, idx) => {
         return item?.url ? (
-          <img
-            // 部署环境需要加上onClick
-            // onClick={() => {
-            //   if (item.link1) {
-            //     location.href = item.link;
-            //   }
-            // }}
-            src={item.url}
-            key={idx}
-            style={{ visibility: item.url ? '' : 'hidden' }}
-          />
+          <img src={item.url} key={idx} style={{ visibility: item.url ? '' : 'hidden' }} />
         ) : (
           <img src="//static.zuifuli.com/images/make/empty-pic.png" />
         );

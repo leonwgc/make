@@ -1,4 +1,4 @@
-import { Input, Switch, Select } from 'antd';
+import { Input, Select } from 'antd';
 import { getOptions } from '../helper';
 
 export const Flex = {

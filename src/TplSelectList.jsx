@@ -1,7 +1,7 @@
 import React, { useEffect, useRef } from 'react';
 import { Popconfirm } from 'antd';
 import { getConfigById } from './components/index';
-import DesignRenderer from './components/DesignRenderer';
+import DesignRenderer from './components/TplComp';
 import { Icon } from 'react-uni-comps';
 import * as storage from './storage';
 import useSort from '~/hooks/useSort';
@@ -49,7 +49,8 @@ export default function TplSelectList() {
                   title="确定删除此组件？"
                   onConfirm={() => {
                     storage.removeTpl(item.tplId);
-                    fetchList();
+                    app.tplList = storage.getTplList();
+                    updateStore();
                     showSuccess('删除成功');
                   }}
                   okText="确定"

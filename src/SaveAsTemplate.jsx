@@ -28,6 +28,8 @@ export default function SaveAsTemplate({ updateStore, comp }) {
       tplId: gid(),
     });
 
+    app.tplList = storage.getTplList();
+
     updateStore({ showTplDlg: false });
     form.resetFields();
     message.success('保存成功');
