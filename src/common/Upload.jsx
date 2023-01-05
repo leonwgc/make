@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Upload as AntUpload, Modal } from 'antd';
 
-export function getBase64(file) {
+function getBase64(file) {
   return new Promise((resolve, reject) => {
     const reader = new FileReader();
     reader.readAsDataURL(file);

@@ -2,8 +2,8 @@ import React from 'react';
 import classnames from 'classnames';
 import { useSelector } from 'simple-redux-store';
 import { getConfigById } from './components/index';
-import Icon from './Icon';
 import './Renderer.less';
+import { Icon } from 'react-uni-comps';
 
 const Renderer = ({ item = {}, isDesign = false, onRemove }) => {
   const app = useSelector((state) => state.app);
@@ -54,7 +54,7 @@ const Renderer = ({ item = {}, isDesign = false, onRemove }) => {
         ></div> */}
         {!isConfig ? (
           <div className="del">
-            <Icon type="icondelete" onClick={onRemove}></Icon>
+            <Icon type="icondelete" onClick={() => onRemove(comp.id)}></Icon>
           </div>
         ) : null}
       </div>

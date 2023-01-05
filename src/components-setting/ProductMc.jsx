@@ -9,7 +9,7 @@ import TabGroup from './TabGroup';
 import ProductNum from './ProductNum';
 import ProductBuyBtn from './ProductBuyBtn';
 import { cloneDeep } from 'lodash';
-import Icon from '../Icon';
+import { Icon } from 'react-uni-comps';
 import './ProductMc.less';
 
 // 自定义设置面板

@@ -4,6 +4,12 @@ export function gid() {
   return nanoid(12);
 }
 
+export function getBase64(img, callback) {
+  const reader = new FileReader();
+  reader.addEventListener('load', () => callback(reader.result));
+  reader.readAsDataURL(img);
+}
+
 export const getActiveComponentById = (id, comps = []) => {
   if (!id) return null;
 

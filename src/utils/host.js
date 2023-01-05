@@ -23,18 +23,14 @@ export function getEnv() {
   return env;
 }
 /**
- * 获取api host域名前缀, e.g. //api.zuifuli.com
+ * 获取api host域名前缀
  *
- * @param {boolean} [isEhr=false]  是否为ehr api
  * @return {*}
  */
-export const getApiPrefix = (isEhr = false) => {
+export const getApiPrefix = () => {
   const hostname = location.hostname;
 
-  const host =
-    hostname.indexOf('zuifuli.com') == -1
-      ? ''
-      : `//${getHostPrefix()}${isEhr ? 'ehr' : 'api'}.zuifuli.com`;
+  const host = hostname.indexOf('domain.com') == -1 ? '' : `//${getHostPrefix()}api.domain.com`;
 
   return host;
 };

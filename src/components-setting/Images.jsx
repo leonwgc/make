@@ -1,18 +1,11 @@
-import React, { useEffect, useState, useRef, useCallback, useMemo } from 'react';
-import { Button, Modal, Tabs, Form, Input, message, Radio, Checkbox, Divider } from 'antd';
-import { SketchPicker } from 'react-color';
-import { PlusOutlined, LoadingOutlined, CloseOutlined, SearchOutlined } from '@ant-design/icons';
+import React, { useEffect } from 'react';
+import { Form, Input, Radio, Checkbox, Divider } from 'antd';
 import Upload from '~/common/Upload';
 import FormRenderer from 'antd-form-render';
-import Icon from '../Icon';
 import ColorPicker from './ColorPicker';
 import './Images.less';
-
-function getBase64(img, callback) {
-  const reader = new FileReader();
-  reader.addEventListener('load', () => callback(reader.result));
-  reader.readAsDataURL(img);
-}
+import { getBase64 } from '~/helper';
+import { BallSpin, Icon } from 'react-uni-comps';
 
 const map = {
   image1: {
@@ -299,7 +292,7 @@ function MyUpload({ label, tip = '', index, updateStore, selectedComponent }) {
           {(loading, fileList) => {
             return fileList.length == 1 ? null : (
               <div style={{ fontSize: 20, color: '#909399' }}>
-                {loading ? <LoadingOutlined /> : <PlusOutlined />}
+                {loading ? <BallSpin /> : <Icon type="uc-icon-jia2" />}
               </div>
             );
           }}

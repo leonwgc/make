@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import EmptyImage from './EmptyImage';
-import Icon from '../Icon';
+import { Icon } from 'react-uni-comps';
 import { Tabs } from 'zarm';
 import './Product.less';
 
@@ -33,7 +33,6 @@ export default function Product({
   btnText,
   tabGroup = {},
   productNum = [1],
-  inStage,
 }) {
   const { exist = false, theme = 'light', tabs = [], products = [] } = tabGroup;
   const [index, setIndex] = useState(0);
@@ -67,7 +66,7 @@ export default function Product({
       {renderTabs()}
       <div className="list">
         {plist.map((item, idx) => {
-          return (!inStage && item.id) || inStage ? (
+          return (
             <ProductItem
               key={idx}
               data={item}
@@ -83,7 +82,7 @@ export default function Product({
               btnText={btnText}
               showBtn={showBtn}
             ></ProductItem>
-          ) : null;
+          );
         })}
       </div>
     </div>

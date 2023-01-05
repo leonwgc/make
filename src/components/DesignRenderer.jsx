@@ -1,5 +1,5 @@
 import React from 'react';
-import Icon from '../Icon';
+import { Icon } from 'react-uni-comps';
 import './DesignRenderer.less';
 
 export default function DesignRenderer({ iconName = '', label = '', type, deleteNode = null }) {

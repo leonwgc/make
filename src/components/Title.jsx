@@ -1,6 +1,6 @@
 import React from 'react';
+import { Icon } from 'react-uni-comps';
 import './Title.less';
-import Icon from '../Icon';
 
 export default function Title({
   text = '标题',

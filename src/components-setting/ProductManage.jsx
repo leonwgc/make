@@ -6,7 +6,7 @@ import { showError } from '../msg';
 import { filterDupProducts } from '../helper';
 import * as service from '../service';
 import ProductList from './ProductList';
-import Icon from '../Icon';
+import { Icon } from 'react-uni-comps';
 import './ProductManage.less';
 
 const { Panel } = Collapse;

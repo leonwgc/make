@@ -3,7 +3,7 @@ import dayjs from 'dayjs';
 import { Popconfirm } from 'antd';
 import { getConfigById } from './components/index';
 import DesignRenderer from './components/DesignRenderer';
-import Icon from './Icon';
+import { Icon } from 'react-uni-comps';
 import { gid, convertJSONToObject } from './helper';
 import * as service from './service';
 import useSort from '~/hooks/useSort';

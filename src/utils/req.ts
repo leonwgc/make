@@ -4,7 +4,7 @@ import { responseHandler } from '~/utils/helper';
 import { Toast } from 'react-uni-comps';
 
 /**
- * ajax请求方法，处理了最福利api code逻辑,JSON.big ID问题, 默认toast显示错误
+ * ajax请求方法，处理了api code逻辑,JSON.big ID问题, 默认toast显示错误
  *
  * @export
  * @param {*} method 请求方法
@@ -30,12 +30,11 @@ export default function req(method, url, data, headers = {}, toastError = true) 
  * @param {*} url
  * @param {*} data
  * @param {*} headers
- * @param {boolean} [isEhrApi=false]
  * @param {boolean} [toastError=true]
  * @return {*}
  */
-export const get = (url, data?, headers?, isEhrApi = false, toastError = true) => {
-  return req('get', `${getApiPrefix(isEhrApi)}${url}`, data, headers, toastError);
+export const get = (url, data?, headers?, toastError = true) => {
+  return req('get', `${getApiPrefix()}${url}`, data, headers, toastError);
 };
 
 /**
@@ -44,12 +43,11 @@ export const get = (url, data?, headers?, isEhrApi = false, toastError = true) =
  * @param {*} url
  * @param {*} data
  * @param {*} headers
- * @param {boolean} [isEhrApi=false]
  * @param {boolean} [toastError=true]
  * @return {*}
  */
-export const post = (url, data?, headers?, isEhrApi = false, toastError = true) => {
-  return req('post', `${getApiPrefix(isEhrApi)}${url}`, data, headers, toastError);
+export const post = (url, data?, headers?, toastError = true) => {
+  return req('post', `${getApiPrefix()}${url}`, data, headers, toastError);
 };
 
 /**
@@ -62,8 +60,8 @@ export const post = (url, data?, headers?, isEhrApi = false, toastError = true) 
  * @param {boolean} [toastError=true]
  * @return {*}
  */
-export const put = (url, data?, headers?, isEhrApi = false, toastError = true) => {
-  return req('put', `${getApiPrefix(isEhrApi)}${url}`, data, headers, toastError);
+export const put = (url, data?, headers?, toastError = true) => {
+  return req('put', `${getApiPrefix()}${url}`, data, headers, toastError);
 };
 
 /**
@@ -72,10 +70,9 @@ export const put = (url, data?, headers?, isEhrApi = false, toastError = true) =
  * @param {*} url
  * @param {*} data
  * @param {*} headers
- * @param {boolean} [isEhrApi=false]
  * @param {boolean} [toastError=true]
  * @return {*}
  */
-export const del = (url, data?, headers?, isEhrApi = false, toastError = true) => {
-  return req('delete', `${getApiPrefix(isEhrApi)}${url}`, data, headers, toastError);
+export const del = (url, data?, headers?, toastError = true) => {
+  return req('delete', `${getApiPrefix()}${url}`, data, headers, toastError);
 };

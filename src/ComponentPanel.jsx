@@ -1,13 +1,13 @@
-import React, { useReducer, useState } from 'react';
-import { Tabs, Radio } from 'antd';
+import React, { useState } from 'react';
+import { Radio } from 'antd';
 import ComponentSelectList from './ComponentSelectList';
 import { components, productComponents, otherComponents } from './components/index';
 import TplSelectList from './TplSelectList';
-import ErrorBoundary from './ErrorBoundary';
-import Icon from './Icon';
+import { Icon } from 'react-uni-comps';
 import classnames from 'classnames';
 import './ComponentPanel.less';
 import { useAppData } from 'simple-redux-store';
+import { ErrorBoundary } from 'react-uni-comps';
 
 const ComponentPanel = () => {
   const app = useAppData();

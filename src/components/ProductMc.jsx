@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import EmptyImage from './EmptyImage';
-import Icon from '../Icon';
+import { Icon } from 'react-uni-comps';
 import { Tabs } from 'zarm';
 import './ProductMc.less';
 

@@ -17,9 +17,6 @@ export function getURLParams() {
  * @return {*}
  */
 export const responseHandler = (res) => {
-  const loginRedirectUrl = `//${getHostPrefix()}api.zuifuli.com/api/duncan/s/r/common`;
-  const logoUrl = 'https://static.zuifuli.com/images/v-logo.png';
-
   return new Promise((resolve, reject) => {
     let code = Number(res.code);
     if (code === 110004 || code === 130003) {

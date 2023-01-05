@@ -7,8 +7,8 @@ import Footer from './Footer';
 import usePageTitle from './hooks/usePageTitle';
 import './App.less';
 
-export default function App({ history }) {
-  usePageTitle('可视化h5编辑器');
+export default function App() {
+  usePageTitle('运营自定义装修平台');
   return (
     <div className="page-app">
       <Header />

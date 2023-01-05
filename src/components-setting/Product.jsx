@@ -8,7 +8,7 @@ import ProductManage from './ProductManage';
 import TabGroup from './TabGroup';
 import ProductNum from './ProductNum';
 import ProductBuyBtn from './ProductBuyBtn';
-import Icon from '../Icon';
+import { Icon } from 'react-uni-comps';
 import { cloneDeep } from 'lodash';
 import './Product.less';
 
