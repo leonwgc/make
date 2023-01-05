@@ -4,10 +4,15 @@ import { SketchPicker } from 'react-color';
 import { PlusOutlined, LoadingOutlined, CloseOutlined, SearchOutlined } from '@ant-design/icons';
 import Upload from '~/common/Upload';
 import FormRenderer from 'antd-form-render';
-import { getHostPrefix } from '~/utils/host';
 import Icon from '../Icon';
 import ColorPicker from './ColorPicker';
 import './Images.less';
+
+function getBase64(img, callback) {
+  const reader = new FileReader();
+  reader.addEventListener('load', () => callback(reader.result));
+  reader.readAsDataURL(img);
+}
 
 const map = {
   image1: {
@@ -274,19 +279,21 @@ function MyUpload({ label, tip = '', index, updateStore, selectedComponent }) {
     <div className="image-upload">
       <div className="l">
         <Upload
-          data={{ storeType: 'I', type: '29', creator: 'system' }}
-          action={`https://${getHostPrefix()}api.zuifuli.com/api/customer/v2/attach/upload4NoLogin`}
           fileList={_fl}
           showUploadList={true}
           accept="image/*"
-          onFileListChange={(fileList) => {
-            if (!fileList.length) {
-              images[index] = { ...images[index], url: '' };
+          onChange={(info) => {
+            if (info.file.originFileObj) {
+              getBase64(info.file.originFileObj, (url) => {
+                images[index] = { ...images[index], url: url };
+                selectedComponent.props.images = [...images];
+                updateStore();
+              });
             } else {
-              images[index] = { ...images[index], url: fileList[0].url };
+              images[index] = undefined;
+              selectedComponent.props.images = [...images];
+              updateStore();
             }
-            selectedComponent.props.images = [...images];
-            updateStore();
           }}
         >
           {(loading, fileList) => {

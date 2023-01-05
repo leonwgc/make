@@ -1,7 +1,5 @@
-import { createFromIconfontCN } from '@ant-design/icons';
+import { Icon } from 'react-uni-comps';
 
-const IconFont = createFromIconfontCN({
-  scriptUrl: '//at.alicdn.com/t/font_2398464_owy9cc7cq9g.js',
-});
+Icon.loadFromIconfontCN('//at.alicdn.com/t/c/font_2398464_xxpb9pb5xis.js');
 
-export default IconFont;
+export default Icon;
