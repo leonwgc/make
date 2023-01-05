@@ -1,7 +1,7 @@
-import React, { useReducer, useState } from 'react';
-import { useUpdateStore, useSelector } from 'simple-redux-store';
+import React, { useState } from 'react';
+import { useSelector } from 'simple-redux-store';
 import ComponentSelectList from './ComponentSelectList';
-import { components, formComponents } from './components/index';
+import { components } from './components/index';
 import ErrorBoundary from './ErrorBoundary';
 import Icon from './Icon';
 import classnames from 'classnames';

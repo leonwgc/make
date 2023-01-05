@@ -3,7 +3,7 @@
 
 1. 技术栈：react全家桶 react/redux/hooks/webpack5
 
-2. 打包基于packx(基于webpack5) [https://www.npmjs.com/package/packx](https://www.npmjs.com/package/packx)
+2. 打包基于packx(基于webpack5) [https://www.npmjs.com/package/packw](https://www.npmjs.com/package/packw)
 
 3.状态管理基于simple-redux-store(基于redux) [https://www.npmjs.com/package/simple-redux-store](https://www.npmjs.com/package/simple-redux-store)
 
@@ -15,9 +15,7 @@
 
 7. 移动端预览基于zarm [https://zarm.gitee.io/#/](https://zarm.gitee.io/#/)
 
-8. hooks组件依赖react-use-lib,包含拖拽排序，dom拖拽 [https://www.npmjs.com/package/react-use-lib](https://www.npmjs.com/package/react-use-lib)
-
-9. localstorage本地存储基于 simple-browser-store[https://www.npmjs.com/package/simple-browser-store](https://www.npmjs.com/package/simple-browser-store)
+8. localstorage本地存储基于 simple-browser-store[https://www.npmjs.com/package/simple-browser-store](https://www.npmjs.com/package/simple-browser-store)
 
 #### 运行
 - yarn 安装依赖

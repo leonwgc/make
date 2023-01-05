@@ -21,18 +21,17 @@
   "dependencies": {
     "ahooks": "^2.9.2",
     "antd": "^4.9.2",
-    "antd-form-render": "latest",
+    "antd-form-render": "~1.6.2",
     "classnames": "^2.2.6",
-    "nanoid": "^3.1.22",
     "react": "^17.0.2",
     "react-color": "^2.19.3",
     "react-dom": "^17.0.2",
     "react-grid-layout": "^1.2.4",
     "react-redux": "^7.2.2",
     "react-router-dom": "^5.2.0",
-    "react-use-lib": "latest",
-    "simple-browser-store": "^0.1.1",
-    "simple-redux-store": "latest",
+    "react-uni-comps": "^1.8.6-beta2",
+    "simple-browser-store": "^1.0.0",
+    "simple-redux-store": "~1.2.0",
     "sortablejs": "^1.13.0",
     "zarm": "^2.8.2",
     "zarm-form-render": "^1.0.1"
@@ -48,7 +47,7 @@
     "eslint-plugin-react-hooks": "^2.5.0",
     "husky": "^6.0.0",
     "lint-staged": "^10.5.4",
-    "packw": "~1.0.1",
+    "packw": "1.2.0",
     "prettier": "^2.2.1"
   },
   "lint-staged": {

@@ -1,4 +1,4 @@
-import { nanoid } from 'nanoid';
+import { nanoid } from 'react-uni-comps';
 
 export function gid() {
   return nanoid(12);
