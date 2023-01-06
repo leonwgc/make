@@ -1,9 +1,8 @@
 import React from 'react';
-import classnames from 'classnames';
 import { useSelector } from 'simple-redux-store';
 import { getConfigById } from './components/index';
 import './Renderer.less';
-import { Icon } from 'react-uni-comps';
+import { Icon, clsx } from 'react-uni-comps';
 
 const Renderer = ({ item = {}, isDesign = false, onRemove }) => {
   const app = useSelector((state) => state.app);
@@ -36,7 +35,7 @@ const Renderer = ({ item = {}, isDesign = false, onRemove }) => {
 
     return isDesign ? (
       <div
-        className={classnames({
+        className={clsx({
           'design-cmp': true,
           'config-cmp': isConfig,
           'active': comp.id === app.activeComp,

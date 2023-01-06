@@ -1,5 +1,5 @@
 import React, { useEffect, useRef } from 'react';
-import Sortable from 'sortablejs';
+import { Sortable } from 'react-uni-comps';
 import TplComp from './components/TplComp';
 
 export default function ComponentSelectList({ components = [] }) {

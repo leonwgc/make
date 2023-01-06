@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useCallback } from 'react';
 import { gid, getSettingDefaultValues, convertJSONToObject, getClosestComp } from '../helper';
 import { message } from 'antd';
-import Sortable from 'sortablejs';
+import { Sortable } from 'react-uni-comps';
 import Renderer from '../Renderer';
 import { getConfigById } from './index';
 import { useUpdateStore, useAppData } from 'simple-redux-store';

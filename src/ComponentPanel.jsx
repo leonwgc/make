@@ -3,8 +3,7 @@ import { Radio } from 'antd';
 import ComponentSelectList from './ComponentSelectList';
 import { components, productComponents, otherComponents } from './components/index';
 import TplSelectList from './TplSelectList';
-import { Icon } from 'react-uni-comps';
-import classnames from 'classnames';
+import { Icon, clsx } from 'react-uni-comps';
 import './ComponentPanel.less';
 import { useAppData } from 'simple-redux-store';
 import { ErrorBoundary } from 'react-uni-comps';
@@ -30,11 +29,11 @@ const ComponentPanel = () => {
                 setActiveTypes([...activeTypes, idx]);
               }
             }}
-            className={classnames('type-title', { active: activeTypes.includes(idx) })}
+            className={clsx('type-title', { active: activeTypes.includes(idx) })}
           >
             {item.title}
           </div>
-          <div className={classnames('type-list', { hide: !activeTypes.includes(idx) })}>
+          <div className={clsx('type-list', { hide: !activeTypes.includes(idx) })}>
             <ComponentSelectList components={item.components} />
           </div>
         </div>

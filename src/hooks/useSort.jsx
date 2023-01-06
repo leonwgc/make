@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import Sortable from 'sortablejs';
+import { Sortable } from 'react-uni-comps';
 
 export default function useSort(ref, config) {
   useEffect(() => {
