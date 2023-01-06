@@ -167,7 +167,7 @@ export default function ProductManage({ selectedComponent, updateStore }) {
           const list = result.map((item) => ({
             id: item.skuId,
             name: item.name,
-            skuH5Url: ` https://${getHostPrefix()}h5.zuifuli.com/store/couponExchange/${activityCode}/${
+            skuH5Url: ` https://${getHostPrefix()}h5.xxx.com/store/couponExchange/${activityCode}/${
               item.skuId
             }`,
             imageUrl: item.imageUrl,
