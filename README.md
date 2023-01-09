@@ -3,11 +3,11 @@
 
 1. 技术栈：react全家桶 react/redux/hooks/webpack5
 
-2. 打包基于packx(基于webpack5) [https://www.npmjs.com/package/packw](https://www.npmjs.com/package/packw)
+2. 打包基于packw(webpack5封装工具) [https://www.npmjs.com/package/packw](https://www.npmjs.com/package/packw)
 
-3.状态管理基于simple-redux-store(基于redux) [https://www.npmjs.com/package/simple-redux-store](https://www.npmjs.com/package/simple-redux-store)
+3. 状态管理基于simple-redux-store (基于redux) [https://www.npmjs.com/package/simple-redux-store](https://www.npmjs.com/package/simple-redux-store)
 
-4. 拖拽/排序依赖 [http://www.sortablejs.com/](http://www.sortablejs.com/)
+4. 拖拽排序 [http://www.sortablejs.com/](http://www.sortablejs.com/)
 
 5. pc端设置面板组件基于antd v4 [https://ant.design/index-cn](https://ant.design/index-cn)
 
