@@ -1,13 +1,13 @@
 import React from 'react';
 import { Button, Modal, Space, Form, Input, message, Popconfirm } from 'antd';
-import { useUpdateStore, useSelector } from 'simple-redux-store';
+import { useUpdateStore, useAppData } from 'simple-redux-store';
 import DataRenderer from './components/DataRenderer';
 import * as service from './storage';
 import Preview from './Preview';
 import './Footer.less';
 
 export default function Footer() {
-  const app = useSelector((state) => state.app);
+  const app = useAppData();
   const [saveForm] = Form.useForm();
   const updateStore = useUpdateStore();
 

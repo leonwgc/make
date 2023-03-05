@@ -1,9 +1,9 @@
-import React, { useEffect, uesState, useState } from 'react';
-import { useSelector } from 'simple-redux-store';
+import React, { useEffect, useState } from 'react';
+import { useAppData } from 'simple-redux-store';
 import { getActiveComponentById } from '../helper';
 
 export default function useSelectedComponent() {
-  const app = useSelector((state) => state.app);
+  const app = useAppData();
   const [comp, setComp] = useState(null);
 
   useEffect(() => {

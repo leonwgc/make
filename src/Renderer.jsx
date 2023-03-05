@@ -1,11 +1,11 @@
 import React from 'react';
-import { useSelector } from 'simple-redux-store';
+import { useAppData } from 'simple-redux-store';
 import { getConfigById } from './components/index';
 import './Renderer.less';
 import { Icon, clsx } from 'react-uni-comps';
 
 const Renderer = ({ item = {}, isDesign = false, onRemove }) => {
-  const app = useSelector((state) => state.app);
+  const app = useAppData();
   const { comps = [] } = item;
 
   if (!comps.length) {

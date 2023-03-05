@@ -1,7 +1,7 @@
 import React from 'react';
 import { Modal, Form } from 'antd';
 import FormRenderer from 'antd-form-render';
-import { useUpdateStore, useSelector } from 'simple-redux-store';
+import { useUpdateStore, useAppData } from 'simple-redux-store';
 import { showSuccess } from './msg';
 import ColorPicker from './ColorPicker';
 import * as storage from './storage';
@@ -9,7 +9,7 @@ import './Header.less';
 import { Icon, Button, Input, Space } from 'react-uni-comps';
 
 export default function Header() {
-  const app = useSelector((state) => state.app);
+  const app = useAppData();
   const updateStore = useUpdateStore();
   const [saveForm] = Form.useForm();
 
