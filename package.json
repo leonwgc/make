@@ -16,7 +16,8 @@
     "start": "packw start -p 3000",
     "build": "packw build",
     "prepare": "husky install",
-    "lint-staged": "lint-staged"
+    "lint-staged": "lint-staged",
+    "build:doc": "node pack"
   },
   "dependencies": {
     "antd": "^4.9.2",
